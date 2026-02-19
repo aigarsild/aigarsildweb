@@ -96,6 +96,10 @@ body {
   overflow-x: hidden;
 }
 
+p {
+  font-size: 14px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
