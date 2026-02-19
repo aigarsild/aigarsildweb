@@ -413,11 +413,13 @@ h6 {
    ============================================ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--blue);
   padding: var(--space-lg) 0;
   padding-top: 80px;
-  overflow: hidden;
+  /* overflow: hidden removed so the blob can bleed down into the trusted section.
+     Horizontal overflow is caught by body { overflow-x: hidden }. */
+  z-index: 3;
 }
 
 .hero__container {
@@ -470,30 +472,38 @@ h6 {
 }
 
 .hero__headline {
-  font-size: var(--text-5xl);
-  font-weight: var(--font-black);
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: var(--space-md);
-}
-
-.hero__tagline {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: var(--space-sm);
-  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 100px;
+  color: #FFFFFF;
+  margin: 0;
 }
 
 .hero__cta {
   margin-top: var(--space-md);
 }
 
-/* Trusted By Section */
+.hero__cta .pill-badge {
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #FFFFFF 0%, #CCCF00 49.04%, #FBFF00 100%);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
+  border-radius: 40px;
+  padding: 14px 60px;
+  color: #003AFF;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+/* Trusted By Section — sits just below the hero (first scroll reveal) */
 .hero__trusted {
+  background: var(--blue);
   padding: var(--space-xl) 0;
   text-align: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   overflow: hidden;
 }
@@ -783,6 +793,11 @@ h6 {
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
+  /* Prevent the browser from stealing touch events for scrolling/zooming
+     on these elements — we handle all touch interaction ourselves */
+  touch-action: none;
+  /* Promote to its own compositor layer for jank-free GPU movement */
+  transform: translate3d(0, 0, 0);
 }
 
 .portfolio__ui-item.is-dragging {
@@ -790,6 +805,8 @@ h6 {
   z-index: 50 !important;
   transition: none !important;
   filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.35));
+  /* Reinforce GPU layer promotion during active drag */
+  will-change: transform;
 }
 
 .portfolio__ui-item--large {
@@ -958,12 +975,16 @@ h6 {
   }
 
   .portfolio__ui-blob {
-    height: 400px;
+    height: 900px;
     margin-right: 0;
   }
 
   .portfolio__ui-item {
-    width: 260px;
+    width: 220px;
+  }
+
+  .portfolio__ui-item--large {
+    width: 280px;
   }
 }
 
@@ -1697,7 +1718,7 @@ h6 {
 
 @media (max-width: 768px) {
   .portfolio--page .portfolio__ui-blob {
-    height: 600px;
+    height: 1000px;
   }
 }
 
@@ -2273,43 +2294,26 @@ h6 {
 
 @media (max-width: 768px) {
   .svcs-stack {
-    padding: var(--space-lg) 0;
+    padding: var(--space-xl) 0;
   }
 
   .svcs-stack__container {
     min-height: auto;
+    padding: 0 var(--space-sm);
   }
 
+  /* Blobs don't translate to mobile — replace with card backgrounds */
   .svcs-stack__blobs {
-    position: relative;
-    inset: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: none;
   }
 
-  .svcs-stack__blob {
-    position: relative;
-    width: 100% !important;
-    max-width: none;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    margin-bottom: -60px;
-  }
-
-  .svcs-stack__blob:last-child {
-    margin-bottom: 0;
-  }
-
+  /* Stack content blocks vertically as white cards */
   .svcs-stack__contents {
     position: relative;
     inset: auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
-    margin-top: -100%;
+    gap: var(--space-md);
   }
 
   .svcs-stack__content {
@@ -2320,6 +2324,9 @@ h6 {
     bottom: auto !important;
     width: 100% !important;
     max-width: none;
+    background: var(--white);
+    border-radius: 30px;
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .svcs-stack__title {
@@ -2328,6 +2335,7 @@ h6 {
 
   .svcs-stack__text {
     font-size: var(--text-base);
+    line-height: 1.6;
   }
 }
 
@@ -2378,8 +2386,16 @@ h6 {
 
   .hero__content {
     padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    max-width: 100%;
     text-align: center;
     align-items: center;
+  }
+
+  .hero__headline {
+    font-size: 64px;
+    line-height: 68px;
   }
 
   .services__shape--lime {
@@ -2407,12 +2423,26 @@ h6 {
   }
 
   .hero {
-    min-height: auto;
+    height: auto;
+    min-height: 100vh;
     padding: var(--space-xl) 0;
+    padding-top: 80px;
   }
 
   .hero__headline {
-    line-height: 1.1;
+    font-size: 60px;
+    line-height: 64px;
+  }
+
+  .hero__blob {
+    width: 500px;
+    left: -250px;
+    max-width: none;
+    
+  }
+
+  .hero__cta .pill-badge {
+    transform: none;
   }
 
   .hero__logos {
@@ -2437,9 +2467,39 @@ h6 {
     text-align: center;
   }
 
-  /* New page responsive styles */
+  /* Services page responsive */
+  .page-hero {
+    padding: calc(80px + var(--space-lg)) 0 var(--space-xl);
+  }
+
+  .page-hero__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-hero__description {
+    font-size: var(--text-base);
+  }
+
   .services-detail__container {
     grid-template-columns: 1fr;
+    padding: 0 var(--space-sm);
+  }
+
+  .service-card {
+    padding: var(--space-lg);
+  }
+
+  .process-section__container {
+    padding: 0 var(--space-sm);
+  }
+
+  .process-section__title {
+    font-size: var(--text-2xl);
+  }
+
+  .process-section__subtitle {
+    font-size: var(--text-base);
   }
 
   .process-steps {
@@ -2474,6 +2534,11 @@ h6 {
   :root {
     --text-5xl: 30px;
     --text-4xl: 26px;
+  }
+
+  .hero__headline {
+    font-size: 48px;
+    line-height: 52px;
   }
 
   .btn {

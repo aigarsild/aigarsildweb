@@ -65,9 +65,51 @@ function initRandomPortfolioLayout() {
     const cW = container.offsetWidth;
     const cH = container.offsetHeight;
     const isMobile = window.innerWidth <= 768;
-    const itemSize = isMobile ? 260 : 420;
-    const padding = 60;
+    const rotations = [-8, -5, -2, 0, 2, 5, 8];
 
+    if (isMobile) {
+        // Band-based layout for mobile:
+        // Divide the tall container into equal vertical bands — one per card —
+        // so every card is guaranteed to appear in a different part of the section.
+        const itemSize = 220;
+        const largeSize = 280;
+        const bandHeight = cH / items.length;
+
+        items.forEach((item, i) => {
+            const isLarge = item.classList.contains('portfolio__ui-item--large');
+            const w = isLarge ? largeSize : itemSize;
+            const h = w * 0.7;
+
+            // Horizontal: let cards scatter across the container width, slightly
+            // hanging off either edge for a natural, dynamic feel
+            const minX = -w * 0.15;
+            const maxX = cW - w * 0.85;
+            const x = minX + Math.random() * Math.max(0, maxX - minX);
+
+            // Vertical: place within this card's assigned band
+            const bandTop = i * bandHeight;
+            const bandBottom = bandTop + bandHeight;
+            const minY = bandTop;
+            const maxY = Math.max(bandTop, bandBottom - h);
+            const y = minY + Math.random() * Math.max(0, maxY - minY);
+
+            const rotation = rotations[i % rotations.length] + (Math.random() * 4 - 2);
+
+            item.style.left = `${x}px`;
+            item.style.top = `${y}px`;
+            item.style.width = `${w}px`;
+            item.style.zIndex = Math.floor(Math.random() * 5) + 1;
+            item.style.transform = `rotate(${rotation}deg)`;
+            item.dataset.baseRotation = rotation;
+        });
+
+        return;
+    }
+
+    // Desktop: random scatter with overlap detection
+    const itemSize = 420;
+    const largeSize = 560;
+    const padding = 60;
     const placed = [];
 
     function overlaps(x, y, w, h) {
@@ -79,10 +121,6 @@ function initRandomPortfolioLayout() {
         }
         return false;
     }
-
-    const rotations = [-8, -5, -2, 0, 2, 5, 8];
-
-    const largeSize = isMobile ? 340 : 560;
 
     items.forEach((item, i) => {
         const isLarge = item.classList.contains('portfolio__ui-item--large');
@@ -170,7 +208,8 @@ function initPortfolioParallax() {
                         const rotation = parseFloat(item.dataset.baseRotation) || 0;
                         const xMove = centerProgress * s.x;
                         const yMove = centerProgress * s.y;
-                        item.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${rotation}deg)`;
+                        // translate3d keeps items on the GPU compositor layer for smooth parallax
+                        item.style.transform = `translate3d(${xMove}px, ${yMove}px, 0) rotate(${rotation}deg)`;
                     });
                 }
 
@@ -373,6 +412,13 @@ function initDraggableItems() {
     let topZ = 10;
     const DRAG_THRESHOLD = 5;
 
+    // Shared drag state — one active drag at a time
+    let activeItem = null;
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0, startY = 0;
+    let baseTranslateX = 0, baseTranslateY = 0, baseAngle = 0;
+
     function showInfobox(item) {
         const project = item.dataset.project;
         const desc = item.dataset.desc;
@@ -384,13 +430,13 @@ function initDraggableItems() {
                 i.classList.remove('is-active');
                 const rot = parseFloat(i.dataset.baseRotation) || 0;
                 const m = new DOMMatrixReadOnly(getComputedStyle(i).transform);
-                i.style.transform = `translate(${m.e}px, ${m.f}px) rotate(${rot}deg)`;
+                i.style.transform = `translate3d(${m.e}px, ${m.f}px, 0) rotate(${rot}deg)`;
             }
         });
         item.classList.add('is-active');
 
         const m = new DOMMatrixReadOnly(getComputedStyle(item).transform);
-        item.style.transform = `translate(${m.e}px, ${m.f}px) rotate(0deg)`;
+        item.style.transform = `translate3d(${m.e}px, ${m.f}px, 0) rotate(0deg)`;
 
         infoboxTitle.textContent = project;
         infoboxDesc.textContent = desc || '';
@@ -411,7 +457,7 @@ function initDraggableItems() {
                 i.classList.remove('is-active');
                 const rot = parseFloat(i.dataset.baseRotation) || 0;
                 const m = new DOMMatrixReadOnly(getComputedStyle(i).transform);
-                i.style.transform = `translate(${m.e}px, ${m.f}px) rotate(${rot}deg)`;
+                i.style.transform = `translate3d(${m.e}px, ${m.f}px, 0) rotate(${rot}deg)`;
             }
         });
     }
@@ -433,84 +479,88 @@ function initDraggableItems() {
         }
     }, { passive: true });
 
+    function beginDrag(item, clientX, clientY) {
+        activeItem = item;
+        isDragging = true;
+        hasMoved = false;
+        startX = clientX;
+        startY = clientY;
+
+        topZ++;
+        item.style.zIndex = topZ;
+
+        const computed = getComputedStyle(item).transform;
+        if (computed && computed !== 'none') {
+            const m = new DOMMatrixReadOnly(computed);
+            baseTranslateX = m.e;
+            baseTranslateY = m.f;
+            baseAngle = Math.round(Math.atan2(m.b, m.a) * 180 / Math.PI);
+        } else {
+            baseTranslateX = 0;
+            baseTranslateY = 0;
+            baseAngle = 0;
+        }
+
+        item.classList.add('is-dragging');
+        item.dataset.dragged = 'true';
+    }
+
+    function moveDrag(clientX, clientY) {
+        if (!isDragging || !activeItem) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+
+        if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+            hasMoved = true;
+        }
+
+        // translate3d forces GPU compositing for smooth movement
+        activeItem.style.transform = `translate3d(${baseTranslateX + dx}px, ${baseTranslateY + dy}px, 0) rotate(${baseAngle}deg)`;
+    }
+
+    function endDrag() {
+        if (!isDragging || !activeItem) return;
+        isDragging = false;
+        activeItem.classList.remove('is-dragging');
+        showInfobox(activeItem);
+        activeItem = null;
+    }
+
+    // Per-item: only the start event needs to be on the item itself
     items.forEach(item => {
         item.setAttribute('draggable', 'false');
 
-        let dragging = false;
-        let hasMoved = false;
-        let startMouseX, startMouseY;
-        let baseTranslateX, baseTranslateY, baseAngle;
-
-        function beginDrag(clientX, clientY) {
-            dragging = true;
-            hasMoved = false;
-            startMouseX = clientX;
-            startMouseY = clientY;
-
-            topZ++;
-            item.style.zIndex = topZ;
-
-            const computed = getComputedStyle(item).transform;
-            if (computed && computed !== 'none') {
-                const m = new DOMMatrixReadOnly(computed);
-                baseTranslateX = m.e;
-                baseTranslateY = m.f;
-                baseAngle = Math.round(Math.atan2(m.b, m.a) * 180 / Math.PI);
-            } else {
-                baseTranslateX = 0;
-                baseTranslateY = 0;
-                baseAngle = 0;
-            }
-
-            item.classList.add('is-dragging');
-            item.dataset.dragged = 'true';
-        }
-
-        function moveDrag(clientX, clientY) {
-            if (!dragging) return;
-            const dx = clientX - startMouseX;
-            const dy = clientY - startMouseY;
-
-            if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
-                hasMoved = true;
-            }
-
-            item.style.transform = `translate(${baseTranslateX + dx}px, ${baseTranslateY + dy}px) rotate(${baseAngle}deg)`;
-        }
-
-        function endDrag() {
-            if (!dragging) return;
-            dragging = false;
-            item.classList.remove('is-dragging');
-            showInfobox(item);
-        }
-
         item.addEventListener('mousedown', (e) => {
             e.preventDefault();
-            beginDrag(e.clientX, e.clientY);
+            beginDrag(item, e.clientX, e.clientY);
         });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!dragging) return;
-            e.preventDefault();
-            moveDrag(e.clientX, e.clientY);
-        });
-
-        document.addEventListener('mouseup', endDrag);
 
         item.addEventListener('touchstart', (e) => {
             const t = e.touches[0];
-            beginDrag(t.clientX, t.clientY);
+            beginDrag(item, t.clientX, t.clientY);
         }, { passive: true });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!dragging) return;
-            const t = e.touches[0];
-            moveDrag(t.clientX, t.clientY);
-        }, { passive: true });
-
-        document.addEventListener('touchend', endDrag);
     });
+
+    // Single document-level move/end listeners — no per-item duplication
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        moveDrag(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('mouseup', endDrag);
+
+    // Non-passive touchmove so we can call preventDefault and stop the page
+    // from scrolling while the user is actively dragging a card on mobile
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault(); // Block page scroll during card drag
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', endDrag, { passive: true });
+    document.addEventListener('touchcancel', endDrag, { passive: true });
 }
 
 /* ============================================
