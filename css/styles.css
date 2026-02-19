@@ -2094,47 +2094,6 @@ h6 {
 /* ============================================
    FAQ SECTION
    ============================================ */
-.faq-section {
-  padding: var(--space-3xl) 0;
-  background: var(--blue);
-}
-
-.faq-section__container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-
-.faq-section__title {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-black);
-  color: var(--white);
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-lg);
-}
-
-.faq-item {
-  padding: var(--space-lg);
-}
-
-.faq-item__question {
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
-  color: var(--white);
-  margin-bottom: var(--space-sm);
-}
-
-.faq-item__answer {
-  font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
-}
 
 /* ============================================
    SERVICES PAGE — BLUE THEME OVERRIDES
@@ -2497,9 +2456,6 @@ h6 {
     width: 100%;
   }
 
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
 
   .pricing-grid {
     grid-template-columns: 1fr;
