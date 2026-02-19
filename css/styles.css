@@ -1719,10 +1719,7 @@ h6 {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-full);
+  padding: var(--space-sm) 0;
   margin-bottom: var(--space-lg);
 }
 
@@ -1762,17 +1759,12 @@ h6 {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding: var(--space-md);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-md);
+  padding: var(--space-sm) 0;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .contact-method:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
   transform: translateX(4px);
   opacity: 1;
 }
@@ -1812,16 +1804,13 @@ h6 {
 }
 
 .info-card {
-  background: var(--white);
-  padding: var(--space-xl);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  padding: var(--space-xl) 0;
 }
 
 .info-card__title {
   font-size: var(--text-xl);
   font-weight: var(--font-black);
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: var(--space-md);
 }
 
@@ -1837,7 +1826,7 @@ h6 {
   align-items: flex-start;
   gap: var(--space-sm);
   font-size: var(--text-base);
-  color: var(--dark-lighter);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .info-card__icon {
@@ -1847,12 +1836,12 @@ h6 {
 
 .info-card__text {
   font-size: var(--text-base);
-  color: var(--dark-lighter);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.8;
 }
 
 .info-card__text strong {
-  color: var(--dark);
+  color: var(--white);
   font-weight: var(--font-bold);
 }
 
@@ -2107,7 +2096,7 @@ h6 {
    ============================================ */
 .faq-section {
   padding: var(--space-3xl) 0;
-  background: var(--white);
+  background: var(--blue);
 }
 
 .faq-section__container {
@@ -2119,7 +2108,7 @@ h6 {
 .faq-section__title {
   font-size: var(--text-3xl);
   font-weight: var(--font-black);
-  color: var(--dark);
+  color: var(--white);
   text-align: center;
   margin-bottom: var(--space-2xl);
 }
@@ -2132,20 +2121,18 @@ h6 {
 
 .faq-item {
   padding: var(--space-lg);
-  background: #F5F7FA;
-  border-radius: var(--radius-md);
 }
 
 .faq-item__question {
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: var(--space-sm);
 }
 
 .faq-item__answer {
   font-size: var(--text-base);
-  color: var(--dark-lighter);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
 }
 
