@@ -30,6 +30,7 @@
             </button>
             <ul class="nav__menu">
                 <li><a href="../index.html" class="nav__link">Home</a></li>
+                <li><a href="../about.html" class="nav__link">About</a></li>
                 <li><a href="../services.html" class="nav__link">Services</a></li>
                 <li><a href="../case-studies.html" class="nav__link nav__link--active">Case Studies</a></li>
                 <li><a href="../contact.html" class="nav__link">Contact</a></li>
@@ -47,6 +48,23 @@
                 <span class="case-study-hero__tag">Product Design</span>
                 <span class="case-study-hero__tag">Next.js</span>
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+       FLOATING IMAGE GALLERY
+       ============================================ -->
+    <section class="cs-gallery">
+        <div class="cs-gallery__blob">
+            <img src="../assets/case-studies/flowdesk/flow2.webp" alt="Flowdesk dashboard overview" class="cs-gallery__item cs-gallery__item--wide">
+            <img src="../assets/case-studies/flowdesk/flow.webp" alt="Flowdesk brand" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/floui.webp" alt="Flowdesk UI components" class="cs-gallery__item cs-gallery__item--wide" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flow3.webp" alt="Flowdesk interface" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flow4.webp" alt="Flowdesk job management" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flow5.webp" alt="Flowdesk booking system" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flowui-2.webp" alt="Flowdesk UI detail" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flow6.webp" alt="Flowdesk analytics" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/flowdesk/flow-ui.webp" alt="Flowdesk interface element" class="cs-gallery__item" loading="lazy" decoding="async">
         </div>
     </section>
 
@@ -90,6 +108,10 @@
                 • Mobile-responsive for on-the-go access
             </p>
 
+            <a href="https://flowdesk.ee/" target="_blank" rel="noopener" class="case-study-content__link">
+                Visit flowdesk.ee →
+            </a>
+
             <h2>Impact</h2>
             <p>
                 Beta users like Kauplus Rattapood have seen significant operational improvements.
@@ -111,6 +133,14 @@
             </a>
         </div>
     </nav>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&#8249;</button>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">&#8250;</button>
+    </div>
 
     <footer class="footer">
         <div class="footer__container">

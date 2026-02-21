@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initDraggableItems();
     initCtaBlobParallax();
     initSvcsStackParallax();
+    initCsGallery();
+    initLightbox();
 });
 
 /* ============================================
@@ -709,5 +711,275 @@ function initCtaBlobParallax() {
             });
             ticking = true;
         }
+    });
+}
+
+/* ============================================
+   CASE STUDY — FLOATING IMAGE GALLERY
+   Random scatter layout + drag + click-to-lightbox
+   ============================================ */
+function initCsGallery() {
+    const container = document.querySelector('.cs-gallery__blob');
+    const items = document.querySelectorAll('.cs-gallery__item');
+    if (!container || items.length === 0) return;
+
+    const cW = container.offsetWidth;
+    const cH = container.offsetHeight;
+    const isMobile = window.innerWidth <= 768;
+    const rotations = [-7, -4, -1, 1, 4, 7, -3, 3, -5];
+
+    if (isMobile) {
+        const itemSize = 240;
+        const wideSize = 300;
+        const bandHeight = cH / items.length;
+
+        items.forEach((item, i) => {
+            const isWide = item.classList.contains('cs-gallery__item--wide');
+            const w = isWide ? wideSize : itemSize;
+            const h = w * 0.7;
+
+            const minX = -w * 0.1;
+            const maxX = cW - w * 0.9;
+            const x = minX + Math.random() * Math.max(0, maxX - minX);
+
+            const bandTop = i * bandHeight;
+            const maxY = Math.max(bandTop, bandTop + bandHeight - h);
+            const y = bandTop + Math.random() * Math.max(0, maxY - bandTop);
+
+            const rotation = rotations[i % rotations.length] + (Math.random() * 4 - 2);
+
+            item.style.left = `${x}px`;
+            item.style.top = `${y}px`;
+            item.style.width = `${w}px`;
+            item.style.zIndex = Math.floor(Math.random() * 5) + 1;
+            item.style.transform = `rotate(${rotation}deg)`;
+            item.dataset.baseRotation = rotation;
+        });
+    } else {
+        const itemSize = 400;
+        const wideSize = 520;
+        const padding = 40;
+        const placed = [];
+
+        function overlaps(x, y, w, h) {
+            for (const r of placed) {
+                if (x < r.x + r.w + padding && x + w + padding > r.x &&
+                    y < r.y + r.h + padding && y + h + padding > r.y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        items.forEach((item, i) => {
+            const isWide = item.classList.contains('cs-gallery__item--wide');
+            const w = isWide ? wideSize : itemSize;
+            const h = w * 0.65;
+
+            let x, y, attempts = 0;
+            const minX = -w * 0.15;
+            const maxX = cW - w * 0.85;
+            const minY = -h * 0.1;
+            const maxY = cH - h * 0.4;
+
+            do {
+                x = minX + Math.random() * (maxX - minX);
+                y = minY + Math.random() * (maxY - minY);
+                attempts++;
+            } while (overlaps(x, y, w, h) && attempts < 120);
+
+            placed.push({ x, y, w, h });
+
+            const rotation = rotations[i % rotations.length] + (Math.random() * 5 - 2.5);
+
+            item.style.left = `${x}px`;
+            item.style.top = `${y}px`;
+            item.style.width = `${w}px`;
+            item.style.zIndex = Math.floor(Math.random() * 5) + 1;
+            item.style.transform = `rotate(${rotation}deg)`;
+            item.dataset.baseRotation = rotation;
+        });
+    }
+
+    // Drag logic (same pattern as portfolio items)
+    let topZ = 10;
+    const DRAG_THRESHOLD = 5;
+    let activeItem = null;
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0, startY = 0;
+    let baseTranslateX = 0, baseTranslateY = 0, baseAngle = 0;
+
+    function beginDrag(item, clientX, clientY) {
+        activeItem = item;
+        isDragging = true;
+        hasMoved = false;
+        startX = clientX;
+        startY = clientY;
+        topZ++;
+        item.style.zIndex = topZ;
+
+        const computed = getComputedStyle(item).transform;
+        if (computed && computed !== 'none') {
+            const m = new DOMMatrixReadOnly(computed);
+            baseTranslateX = m.e;
+            baseTranslateY = m.f;
+            baseAngle = Math.round(Math.atan2(m.b, m.a) * 180 / Math.PI);
+        } else {
+            baseTranslateX = 0;
+            baseTranslateY = 0;
+            baseAngle = 0;
+        }
+        item.classList.add('is-dragging');
+    }
+
+    function moveDrag(clientX, clientY) {
+        if (!isDragging || !activeItem) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+            hasMoved = true;
+        }
+        activeItem.style.transform = `translate3d(${baseTranslateX + dx}px, ${baseTranslateY + dy}px, 0) rotate(${baseAngle}deg)`;
+    }
+
+    function endDrag() {
+        if (!isDragging || !activeItem) return;
+        isDragging = false;
+        activeItem.classList.remove('is-dragging');
+        if (!hasMoved) {
+            openLightbox(activeItem);
+        }
+        activeItem = null;
+    }
+
+    items.forEach(item => {
+        item.setAttribute('draggable', 'false');
+
+        item.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            beginDrag(item, e.clientX, e.clientY);
+        });
+
+        item.addEventListener('touchstart', (e) => {
+            const t = e.touches[0];
+            beginDrag(item, t.clientX, t.clientY);
+        }, { passive: true });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        moveDrag(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('mouseup', endDrag);
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', endDrag, { passive: true });
+    document.addEventListener('touchcancel', endDrag, { passive: true });
+
+    // Parallax on scroll
+    const section = document.querySelector('.cs-gallery');
+    if (!section) return;
+
+    const speeds = Array.from(items).map(() => ({
+        x: (Math.random() - 0.5) * 100,
+        y: (Math.random() - 0.5) * 140
+    }));
+
+    let pTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!pTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollY + windowHeight > sectionTop - 200 && scrollY < sectionTop + sectionHeight + 200) {
+                    const start = sectionTop - windowHeight;
+                    const end = sectionTop + sectionHeight;
+                    const progress = (scrollY - start) / (end - start);
+                    const centerProgress = progress - 0.5;
+
+                    items.forEach((item, i) => {
+                        if (item.classList.contains('is-dragging')) return;
+                        const s = speeds[i];
+                        const rotation = parseFloat(item.dataset.baseRotation) || 0;
+                        const xMove = centerProgress * s.x;
+                        const yMove = centerProgress * s.y;
+                        item.style.transform = `translate3d(${xMove}px, ${yMove}px, 0) rotate(${rotation}deg)`;
+                    });
+                }
+                pTicking = false;
+            });
+            pTicking = true;
+        }
+    });
+}
+
+/* ============================================
+   LIGHTBOX — Full-screen image viewer
+   ============================================ */
+function openLightbox(imgEl) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    if (!lightbox || !lightboxImg || !imgEl) return;
+
+    const galleryItems = Array.from(document.querySelectorAll('.cs-gallery__item'));
+    lightbox._items = galleryItems;
+    lightbox._currentIndex = galleryItems.indexOf(imgEl);
+
+    lightboxImg.src = imgEl.src;
+    lightboxImg.alt = imgEl.alt;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+}
+
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = lightbox.querySelector('.lightbox__close');
+    const prevBtn = lightbox.querySelector('.lightbox__nav--prev');
+    const nextBtn = lightbox.querySelector('.lightbox__nav--next');
+
+    function close() {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+        const items = lightbox._items;
+        if (!items || !items.length) return;
+        let idx = lightbox._currentIndex + dir;
+        if (idx < 0) idx = items.length - 1;
+        if (idx >= items.length) idx = 0;
+        lightbox._currentIndex = idx;
+        lightboxImg.src = items[idx].src;
+        lightboxImg.alt = items[idx].alt;
+    }
+
+    closeBtn.addEventListener('click', close);
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
     });
 }

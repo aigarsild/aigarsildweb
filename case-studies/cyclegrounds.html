@@ -29,6 +29,7 @@
             </button>
             <ul class="nav__menu">
                 <li><a href="../index.html" class="nav__link">Home</a></li>
+                <li><a href="../about.html" class="nav__link">About</a></li>
                 <li><a href="../services.html" class="nav__link">Services</a></li>
                 <li><a href="../case-studies.html" class="nav__link nav__link--active">Case Studies</a></li>
                 <li><a href="../contact.html" class="nav__link">Contact</a></li>
@@ -45,6 +46,19 @@
                 <span class="case-study-hero__tag">Webshop</span>
                 <span class="case-study-hero__tag">WooCommerce</span>
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+       FLOATING IMAGE GALLERY
+       ============================================ -->
+    <section class="cs-gallery">
+        <div class="cs-gallery__blob">
+            <img src="../assets/case-studies/cyclegrounds/cycl-web.webp" alt="Cyclegrounds website" class="cs-gallery__item cs-gallery__item--wide">
+            <img src="../assets/case-studies/cyclegrounds/cycl.webp" alt="Cyclegrounds logo" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/cyclegrounds/cycl-mo.webp" alt="Cyclegrounds mobile design" class="cs-gallery__item cs-gallery__item--wide" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/cyclegrounds/cycl-col.webp" alt="Cyclegrounds color palette" class="cs-gallery__item" loading="lazy" decoding="async">
+            <img src="../assets/case-studies/cyclegrounds/cycl-tests.webp" alt="Cyclegrounds brand tests" class="cs-gallery__item" loading="lazy" decoding="async">
         </div>
     </section>
 
@@ -100,6 +114,14 @@
             </a>
         </div>
     </nav>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&#8249;</button>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">&#8250;</button>
+    </div>
 
     <footer class="footer">
         <div class="footer__container">
