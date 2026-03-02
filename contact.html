@@ -74,26 +74,58 @@
           I'll get back with an honest assessment, a rough timeline, and what it would cost.
         </p>
 
-        <div class="contact-methods">
-          <a href="mailto:aigarsild@gmail.com" class="contact-method">
-            <div class="contact-method__content">
-              <div class="contact-method__label">Email me directly</div>
-              <div class="contact-method__value">aigarsild@gmail.com</div>
-            </div>
-          </a>
+        <form name="contact" method="POST" data-netlify="true" class="contact-form">
+          <input type="hidden" name="form-name" value="contact" />
 
-          <a href="https://www.linkedin.com/in/aigar-sild/" target="_blank" rel="noopener" class="contact-method">
-            <div class="contact-method__content">
-              <div class="contact-method__label">Or reach out on LinkedIn</div>
-              <div class="contact-method__value">linkedin.com/in/aigar-sild</div>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="name" class="contact-form__label">Your Name</label>
+              <input type="text" id="name" name="name" class="contact-form__input" placeholder="John Smith" required>
             </div>
-          </a>
-        </div>
+            <div class="contact-form__field">
+              <label for="email" class="contact-form__label">Your Email</label>
+              <input type="email" id="email" name="email" class="contact-form__input" placeholder="you@company.com" required>
+            </div>
+          </div>
 
-        <div class="contact-cta">
-          <a href="mailto:aigarsild@gmail.com" class="pill-badge pill-badge--lime">Start a Conversation</a>
-          <a href="mailto:aigarsild@gmail.com?subject=Brand%20Project%20Inquiry" class="pill-badge pill-badge--blue">Ask About a Project</a>
-        </div>
+          <div class="contact-form__field">
+            <label for="company" class="contact-form__label">Company</label>
+            <input type="text" id="company" name="company" class="contact-form__input" placeholder="Your company name">
+          </div>
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="service" class="contact-form__label">What Do You Need?</label>
+              <select id="service" name="service" class="contact-form__input contact-form__select" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="brand-identity">Brand Identity</option>
+                <option value="website">Website Design &amp; Build</option>
+                <option value="both">Brand Identity + Website</option>
+                <option value="other">Something Else</option>
+              </select>
+            </div>
+            <div class="contact-form__field">
+              <label for="timeline" class="contact-form__label">Your Timeline</label>
+              <select id="timeline" name="timeline" class="contact-form__input contact-form__select">
+                <option value="" disabled selected>When do you need this?</option>
+                <option value="asap">As soon as possible</option>
+                <option value="1-month">Within 1 month</option>
+                <option value="2-3-months">2–3 months</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="message" class="contact-form__label">Tell Me About Your Project</label>
+            <textarea id="message" name="message" class="contact-form__input contact-form__textarea" placeholder="A brief description of your company, what you're looking for, and any relevant links..." rows="5" required></textarea>
+          </div>
+
+          <div class="contact-form__footer">
+            <button type="submit" class="pill-badge pill-badge--lime contact-form__submit">Send Message</button>
+            <p class="contact-form__alt">Or email me directly at <a href="mailto:aigarsild@gmail.com" class="contact-form__alt-link">aigarsild@gmail.com</a></p>
+          </div>
+        </form>
       </div>
 
       <div class="contact-hero__info">
