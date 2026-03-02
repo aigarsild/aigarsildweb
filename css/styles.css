@@ -2148,6 +2148,70 @@ h6 {
 }
 
 /* ============================================
+   SUCCESS PAGE
+   ============================================ */
+.success-hero {
+  background: var(--blue);
+  min-height: calc(100vh - 80px);
+  padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+  display: flex;
+  align-items: center;
+}
+
+.success-hero__container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  text-align: center;
+}
+
+.success-hero__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 32px;
+  color: var(--white);
+  margin-bottom: var(--space-lg);
+}
+
+.success-hero__eyebrow {
+  font-size: var(--text-md);
+  font-weight: var(--font-bold);
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+}
+
+.success-hero__title {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-black);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+}
+
+.success-hero__description {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto var(--space-xl);
+}
+
+.success-hero__cta {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
    PRICING SECTION
    ============================================ */
 .pricing-section {
@@ -3218,6 +3282,14 @@ h6 {
     gap: var(--space-md);
   }
 
+  .success-hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .success-hero__cta {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .pricing-grid {
     grid-template-columns: 1fr;
