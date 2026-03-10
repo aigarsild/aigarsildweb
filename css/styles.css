@@ -475,14 +475,27 @@ h6 {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 100px;
-  line-height: 100px;
+  font-size: 42px;
+  line-height: 1.2;
   color: #FFFFFF;
   margin: 0;
+  max-width: 800px;
+}
+
+.hero__tagline {
+  font-size: var(--text-md);
+  font-weight: var(--font-light);
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: var(--space-md);
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 .hero__cta {
   margin-top: var(--space-md);
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .hero__cta .pill-badge {
@@ -1110,6 +1123,66 @@ h6 {
   top: 500px;
   transform: rotate(-5deg);
   opacity: 0.03;
+}
+
+/* ============================================
+   WHY ONE PERSON SECTION
+   ============================================ */
+.why-section {
+  background: var(--white);
+  padding: var(--space-3xl) 0;
+}
+
+.why-section__container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.why-section__headline {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-black);
+  color: var(--dark);
+  margin-bottom: var(--space-xl);
+  line-height: 1.1;
+}
+
+.why-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.why-section__item {
+  padding: var(--space-md) 0;
+}
+
+.why-section__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--dark);
+  margin-bottom: var(--space-sm);
+}
+
+.why-section__text {
+  font-size: var(--text-base);
+  color: var(--dark-lighter);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: var(--space-xl) 0;
+  }
+
+  .why-section__headline {
+    font-size: var(--text-3xl);
+  }
+
+  .why-section__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
 }
 
 /* ============================================
@@ -3154,8 +3227,8 @@ h6 {
   }
 
   .hero__headline {
-    font-size: 64px;
-    line-height: 68px;
+    font-size: 36px;
+    line-height: 1.2;
   }
 
   .services__shape--lime {
@@ -3190,8 +3263,8 @@ h6 {
   }
 
   .hero__headline {
-    font-size: 60px;
-    line-height: 64px;
+    font-size: 32px;
+    line-height: 1.2;
   }
 
   .hero__blob {
@@ -3307,8 +3380,8 @@ h6 {
   }
 
   .hero__headline {
-    font-size: 48px;
-    line-height: 52px;
+    font-size: 26px;
+    line-height: 1.2;
   }
 
   .btn {
