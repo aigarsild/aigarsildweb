@@ -98,124 +98,6 @@
     </div>
   </section>
 
-  <!-- ============================================
-       EDUCATION & CAREER
-       ============================================ -->
-  <section class="about-career">
-    <div class="about-career__container">
-      <div class="about-career__col">
-        <h2 class="about-career__title">Career</h2>
-        <p class="about-career__intro">
-          Over 15 years of professional experience spanning web design, frontend development, product design, and entrepreneurship — working across Estonia, Denmark, and Portugal.
-        </p>
-
-        <div class="about-timeline">
-          <div class="about-timeline__item">
-            <div class="about-timeline__period">2025 – Present</div>
-            <div class="about-timeline__details">
-              <h3 class="about-timeline__role">Founder</h3>
-              <p class="about-timeline__company">Flowdesk.ee</p>
-              <p class="about-timeline__desc">Designed and built a SaaS workshop management platform from the ground up — service order tracking, inventory, invoicing, CRM, and analytics. Built with Next.js, Supabase, and deployed on Vercel.</p>
-            </div>
-          </div>
-
-          <div class="about-timeline__item">
-            <div class="about-timeline__period">2020 – Present</div>
-            <div class="about-timeline__details">
-              <h3 class="about-timeline__role">Fullstack Designer & Founder</h3>
-              <p class="about-timeline__company">Independent — aigarsild.com / Kauplus Rattapood</p>
-              <p class="about-timeline__desc">Running my own design practice and bicycle shop. End-to-end brand design, web development, product design, and AI automation for clients across industries.</p>
-            </div>
-          </div>
-
-          <div class="about-timeline__item">
-            <div class="about-timeline__period">2020 – 2022</div>
-            <div class="about-timeline__details">
-              <h3 class="about-timeline__role">Product Designer</h3>
-              <p class="about-timeline__company">Flowit</p>
-              <p class="about-timeline__desc">Designed product interfaces and user experiences for a growing tech company, bridging the gap between business needs and usable software.</p>
-            </div>
-          </div>
-
-          <div class="about-timeline__item">
-            <div class="about-timeline__period">2015 – 2019</div>
-            <div class="about-timeline__details">
-              <h3 class="about-timeline__role">Frontend Developer</h3>
-              <p class="about-timeline__company">Vaimo — Tallinn & Copenhagen, Denmark</p>
-              <p class="about-timeline__desc">Over four years building e-commerce frontends at one of the leading Magento/Adobe Commerce agencies. Worked with international clients across the Nordics and Europe, eventually relocating to the Copenhagen office.</p>
-            </div>
-          </div>
-
-          <div class="about-timeline__hidden" id="timelineMore">
-            <div class="about-timeline__item">
-              <div class="about-timeline__period">2013 – 2015</div>
-              <div class="about-timeline__details">
-                <h3 class="about-timeline__role">Web Designer</h3>
-                <p class="about-timeline__company">Mauritz Aps — Odense, Denmark</p>
-                <p class="about-timeline__desc">Webshop design and development. This is where I first connected design thinking with e-commerce execution.</p>
-              </div>
-            </div>
-
-            <div class="about-timeline__item">
-              <div class="about-timeline__period">2012 – 2013</div>
-              <div class="about-timeline__details">
-                <h3 class="about-timeline__role">Web Designer</h3>
-                <p class="about-timeline__company">Morning Train Technologies — Odense, Denmark</p>
-                <p class="about-timeline__desc">WordPress theme development and web design at a Danish digital agency.</p>
-              </div>
-            </div>
-
-            <div class="about-timeline__item">
-              <div class="about-timeline__period">2010 – 2012</div>
-              <div class="about-timeline__details">
-                <h3 class="about-timeline__role">Web Designer</h3>
-                <p class="about-timeline__company">Jibbmedia OÜ — Tallinn, Estonia</p>
-                <p class="about-timeline__desc">Where it all started. Branding and web development for Estonian clients.</p>
-              </div>
-            </div>
-          </div>
-
-          <button class="about-timeline__toggle" id="timelineToggle" aria-expanded="false">
-            Earlier experience <span class="about-timeline__toggle-arrow">↓</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="about-career__col">
-        <h2 class="about-career__title">Education</h2>
-
-        <div class="about-education">
-          <div class="about-education__item">
-            <h3 class="about-education__degree">Bachelor's Degree — Web Development</h3>
-            <p class="about-education__school">UCL Erhvervsakademi og Professionshøjskole, Denmark</p>
-          </div>
-
-          <div class="about-education__item">
-            <h3 class="about-education__degree">AP Degree — Multimedia Design</h3>
-            <p class="about-education__school">UCL Erhvervsakademi og Professionshøjskole, Denmark</p>
-          </div>
-
-          <div class="about-education__item">
-            <h3 class="about-education__degree">Engineer's Degree — Informatics</h3>
-            <p class="about-education__school">Instituto Politécnico de Viseu, Portugal</p>
-          </div>
-        </div>
-
-        <h2 class="about-career__title about-career__title--spaced">Languages</h2>
-
-        <div class="about-education">
-          <div class="about-education__item">
-            <h3 class="about-education__degree">Estonian</h3>
-            <p class="about-education__school">Native</p>
-          </div>
-          <div class="about-education__item">
-            <h3 class="about-education__degree">English</h3>
-            <p class="about-education__school">Full Professional Proficiency</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ============================================
        TOOLS & TECHNOLOGIES
@@ -270,7 +152,7 @@
         Let's talk. I'll give you an honest take on what makes sense and what doesn't.
       </p>
 
-      <a href="contact.html" class="cta-section__pill-btn">get in touch</a>
+      <a href="contact.html" class="pill-badge pill-badge--pink cta-section__pill-btn">get in touch</a>
     </div>
   </section>
 
@@ -313,16 +195,6 @@
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
-  <script>
-    const toggle = document.getElementById('timelineToggle');
-    const hidden = document.getElementById('timelineMore');
-    toggle.addEventListener('click', function () {
-      const open = hidden.classList.toggle('is-open');
-      toggle.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', open);
-      toggle.firstChild.textContent = open ? 'Show less ' : 'Earlier experience ';
-    });
-  </script>
 </body>
 
 </html>

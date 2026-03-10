@@ -97,7 +97,7 @@ body {
 }
 
 p {
-  font-size: 14px;
+  font-size: var(--text-sm);
 }
 
 a {
@@ -366,18 +366,19 @@ h6 {
   opacity: 1;
 }
 
-/* Pill Badge */
+/* Pill Badge — standardized button component
+   Same size everywhere, color variants only change gradient + text color */
 .pill-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 32px;
-  border-radius: 40px;
+  padding: 14px 40px;
+  border-radius: var(--radius-lg);
   font-weight: var(--font-black);
-  font-size: 14px;
-  background: linear-gradient(90deg, #FFFFFF -14.75%, #E300AA 47.04%, #FF00BF 100%);
+  font-size: var(--text-sm);
+  background: var(--gradient-pink);
   border: 1px solid #FFFFFF;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
+  box-shadow: var(--shadow-lg), inset 0px 4px 10px #FFFFFF;
   color: var(--white);
   text-decoration: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -390,12 +391,16 @@ h6 {
 }
 
 .pill-badge--lime {
-  background: linear-gradient(90deg, #FFFFFF -14.75%, #E300AA 47.04%, #FF00BF 100%);
-  color: var(--white);
+  background: var(--gradient-lime);
+  color: var(--blue);
+}
+
+.pill-badge--lime:hover {
+  box-shadow: 0px 8px 50px rgba(204, 207, 0, 0.5), inset 0px 4px 10px #FFFFFF;
 }
 
 .pill-badge--pink {
-  background: linear-gradient(90deg, #FFFFFF -14.75%, #E300AA 47.04%, #FF00BF 100%);
+  background: var(--gradient-pink);
   color: var(--white);
 }
 
@@ -472,20 +477,18 @@ h6 {
 }
 
 .hero__headline {
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 42px;
-  line-height: 1.2;
-  color: #FFFFFF;
+  font-size: var(--text-4xl);
+  font-weight: var(--font-black);
+  line-height: 1.15;
+  color: var(--white);
   margin: 0;
   max-width: 800px;
 }
 
 .hero__tagline {
-  font-size: var(--text-md);
+  font-size: var(--text-lg);
   font-weight: var(--font-light);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   margin-top: var(--space-md);
   line-height: 1.6;
   max-width: 600px;
@@ -498,16 +501,9 @@ h6 {
   flex-wrap: wrap;
 }
 
+/* Hero CTA buttons use standard pill-badge sizing — color comes from modifier classes */
 .hero__cta .pill-badge {
-  box-sizing: border-box;
-  background: linear-gradient(90deg, #FFFFFF 0%, #CCCF00 49.04%, #FBFF00 100%);
-  border: 1px solid rgba(255, 255, 255, 0.21);
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
-  border-radius: 40px;
-  padding: 14px 60px;
-  color: #003AFF;
-  margin-top: 40px;
-  font-size: 16px;
+  margin-top: var(--space-lg);
 }
 
 /* Trusted By Section — sits just below the hero (first scroll reveal) */
@@ -875,16 +871,16 @@ h6 {
 .portfolio-infobox__card {
   position: relative;
   width: 271px;
-  height: 217px;
+  min-height: 217px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, #FF00BF 49.04%, #FFFFFF 100%);
   border: 1px solid rgba(255, 255, 255, 0.21);
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
-  border-radius: 40px;
+  box-shadow: var(--shadow-lg), inset 0px 4px 10px #FFFFFF;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--space-xs);
   padding: 30px 20px;
 }
 
@@ -913,47 +909,24 @@ h6 {
 }
 
 .portfolio-infobox__title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 27px;
-  color: #FFFFFF;
+  font-size: var(--text-md);
+  font-weight: var(--font-black);
+  line-height: 1.5;
+  color: var(--white);
   text-align: center;
 }
 
 .portfolio-infobox__desc {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  color: #FFFFFF;
+  font-size: var(--text-sm);
+  font-weight: var(--font-regular);
+  line-height: 1.5;
+  color: var(--white);
   text-align: center;
 }
 
+/* Infobox button inherits pill-badge sizing via HTML class, only adds margin */
 .portfolio-infobox__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 14px;
-  padding: 8px 40px;
-  background: linear-gradient(90deg, #FFFFFF -14.75%, #0038FF 47.04%, #003AFF 100%);
-  border: 1px solid #FFFFFF;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
-  border-radius: 40px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: #FFFFFF;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
-}
-
-.portfolio-infobox__btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 8px 50px rgba(0, 56, 255, 0.5), inset 0px 4px 10px #FFFFFF;
-  opacity: 1;
+  margin-top: var(--space-sm);
 }
 
 /* Mobile responsiveness */
@@ -966,9 +939,9 @@ h6 {
 
   .portfolio-infobox__card {
     width: 240px;
-    height: 195px;
-    border-radius: 30px;
-    padding: 24px 16px;
+    min-height: 195px;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-sm);
   }
 }
 
@@ -1238,27 +1211,9 @@ h6 {
   margin-right: auto;
 }
 
+/* CTA section button — uses pill-badge via HTML class, this is just a positioning hook */
 .cta-section__pill-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 32px;
-  background: linear-gradient(90deg, #FFFFFF -14.75%, #E300AA 47.04%, #FF00BF 100%);
-  border: 1px solid #FFFFFF;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3), inset 0px 4px 10px #FFFFFF;
-  border-radius: 40px;
-  color: var(--white);
-  font-family: var(--font-family);
-  font-weight: var(--font-black);
-  font-size: 14px;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.cta-section__pill-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 50px rgba(255, 0, 191, 0.5), inset 0px 4px 10px #FFFFFF;
-  opacity: 1;
+  /* Inherits all styling from .pill-badge */
 }
 
 .cta-section--light .cta-section__headline {
@@ -2004,7 +1959,7 @@ h6 {
 }
 
 .contact-hero__title {
-  font-size: var(--text-3xl);
+  font-size: var(--text-4xl);
   font-weight: var(--font-black);
   color: var(--white);
   margin-bottom: var(--space-md);
@@ -2271,8 +2226,8 @@ h6 {
 
 .success-hero__description {
   font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
   max-width: 540px;
   margin: 0 auto var(--space-xl);
 }
@@ -3380,8 +3335,8 @@ h6 {
   }
 
   .hero__headline {
-    font-size: 26px;
-    line-height: 1.2;
+    font-size: var(--text-4xl);
+    line-height: 1.15;
   }
 
   .btn {
