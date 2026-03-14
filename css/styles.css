@@ -2708,25 +2708,164 @@ h6 {
   }
 }
 
-.page--services .about-skills {
-  background: transparent;
+/* ============================================
+   SKILLS SCATTER — Floating draggable skill blobs
+   ============================================ */
+.skills-scatter {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-xl) 0;
 }
 
-.page--services .about-skills__title {
+.skills-scatter__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.skills-scatter__headline {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-black);
   color: var(--white);
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
-.page--services .about-skill-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.skills-scatter__area {
+  position: relative;
+  width: 100%;
+  height: 1100px;
 }
 
-.page--services .about-skill-card__title {
+/* Each scatter item: positioned absolutely, holds blob + text */
+.skills-scatter__item {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  width: 350px;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.skills-scatter__item.is-dragging {
+  cursor: grabbing;
+  z-index: 50 !important;
+  transition: none !important;
+}
+
+/* Blob image fills the item as background */
+.skills-scatter__blob {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* Text content centered on blob */
+.skills-scatter__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20% 15%;
+}
+
+.skills-scatter__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-black);
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.skills-scatter__text {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* Color variants — text matched to blob background */
+/* White blobs → blue title, dark text */
+.skills-scatter__item--white-1 .skills-scatter__title,
+.skills-scatter__item--white-2 .skills-scatter__title {
+  color: var(--blue);
+}
+
+.skills-scatter__item--white-1 .skills-scatter__text,
+.skills-scatter__item--white-2 .skills-scatter__text {
+  color: var(--dark);
+}
+
+/* Lime/green blobs → blue title, dark text */
+.skills-scatter__item--lime-1 .skills-scatter__title,
+.skills-scatter__item--lime-2 .skills-scatter__title {
+  color: var(--blue);
+}
+
+.skills-scatter__item--lime-1 .skills-scatter__text,
+.skills-scatter__item--lime-2 .skills-scatter__text {
+  color: var(--dark);
+}
+
+/* Blue blob → lime title, white text */
+.skills-scatter__item--blue .skills-scatter__title {
   color: var(--lime);
 }
 
-.page--services .about-skill-card__text {
-  color: rgba(255, 255, 255, 0.8);
+.skills-scatter__item--blue .skills-scatter__text {
+  color: var(--white);
+}
+
+/* Pink blob → white title, white text */
+.skills-scatter__item--pink .skills-scatter__title {
+  color: var(--white);
+}
+
+.skills-scatter__item--pink .skills-scatter__text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile: stack vertically as simple cards */
+@media (max-width: 768px) {
+  .skills-scatter__headline {
+    font-size: var(--text-2xl);
+  }
+
+  .skills-scatter__area {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .skills-scatter__item {
+    position: relative !important;
+    width: 100% !important;
+    transform: none !important;
+    cursor: default;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+
+  .skills-scatter__blob {
+    display: none;
+  }
+
+  .skills-scatter__content {
+    position: relative;
+    padding: 0;
+  }
+
+  /* Override text colors for mobile cards */
+  .skills-scatter__item .skills-scatter__title {
+    color: var(--lime);
+  }
+
+  .skills-scatter__item .skills-scatter__text {
+    color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 .page--services .process-section__title {

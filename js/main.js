@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSvcsStackParallax();
     initCsGallery();
     initLightbox();
+    initSkillsScatter();
+    initSkillsDrag();
 });
 
 /* ============================================
@@ -982,4 +984,146 @@ function initLightbox() {
         if (e.key === 'ArrowLeft') navigate(-1);
         if (e.key === 'ArrowRight') navigate(1);
     });
+}
+
+/* ============================================
+   SKILLS SCATTER — Random layout
+   Positions skill blob cards randomly across
+   the scatter area, same pattern as portfolio
+   ============================================ */
+function initSkillsScatter() {
+    const container = document.querySelector('.skills-scatter__area');
+    const items = document.querySelectorAll('.skills-scatter__item');
+    if (!container || items.length === 0) return;
+
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) return; // Mobile uses CSS flex fallback
+
+    const cW = container.offsetWidth;
+    const cH = container.offsetHeight;
+    const rotations = [-6, -3, 0, 3, 6, -4];
+    const itemSize = 340;
+    const padding = 50;
+    const placed = [];
+
+    function overlaps(x, y, w, h) {
+        for (const r of placed) {
+            if (x < r.x + r.w + padding && x + w + padding > r.x &&
+                y < r.y + r.h + padding && y + h + padding > r.y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    items.forEach((item, i) => {
+        const w = itemSize;
+        const h = w * 0.8; // Blob aspect ratios vary but roughly this
+
+        let x, y, attempts = 0;
+        const minX = -w * 0.1;
+        const maxX = cW - w * 0.9;
+        const minY = -h * 0.05;
+        const maxY = cH - h * 0.7;
+
+        do {
+            x = minX + Math.random() * (maxX - minX);
+            y = minY + Math.random() * (maxY - minY);
+            attempts++;
+        } while (overlaps(x, y, w, h) && attempts < 100);
+
+        placed.push({ x, y, w, h });
+
+        const rotation = rotations[i % rotations.length] + (Math.random() * 4 - 2);
+
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+        item.style.width = `${w}px`;
+        item.style.zIndex = Math.floor(Math.random() * 5) + 1;
+        item.style.transform = `rotate(${rotation}deg)`;
+        item.dataset.baseRotation = rotation;
+    });
+}
+
+/* ============================================
+   SKILLS SCATTER — Drag behavior
+   Same drag pattern as portfolio items
+   ============================================ */
+function initSkillsDrag() {
+    const items = document.querySelectorAll('.skills-scatter__item');
+    if (!items.length) return;
+
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) return;
+
+    let topZ = 10;
+    let activeItem = null;
+    let isDragging = false;
+    let startX, startY, origX, origY;
+
+    function startDrag(item, clientX, clientY) {
+        activeItem = item;
+        isDragging = true;
+        startX = clientX;
+        startY = clientY;
+        const rect = item.getBoundingClientRect();
+        origX = rect.left;
+        origY = rect.top;
+        topZ++;
+        item.style.zIndex = topZ;
+        item.classList.add('is-dragging');
+    }
+
+    function moveDrag(clientX, clientY) {
+        if (!isDragging || !activeItem) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        const rotation = parseFloat(activeItem.dataset.baseRotation) || 0;
+        activeItem.style.transform = `translate(${dx}px, ${dy}px) rotate(${rotation}deg)`;
+    }
+
+    function endDrag() {
+        if (!activeItem) return;
+        activeItem.classList.remove('is-dragging');
+
+        // Commit the drag offset into left/top so position sticks
+        const dx = parseFloat(activeItem.style.transform.match(/translate\(([-\d.]+)px/)?.[1]) || 0;
+        const dy = parseFloat(activeItem.style.transform.match(/,\s*([-\d.]+)px/)?.[1]) || 0;
+        const currentLeft = parseFloat(activeItem.style.left) || 0;
+        const currentTop = parseFloat(activeItem.style.top) || 0;
+        const rotation = parseFloat(activeItem.dataset.baseRotation) || 0;
+
+        activeItem.style.left = `${currentLeft + dx}px`;
+        activeItem.style.top = `${currentTop + dy}px`;
+        activeItem.style.transform = `rotate(${rotation}deg)`;
+
+        activeItem = null;
+        isDragging = false;
+    }
+
+    items.forEach(item => {
+        item.setAttribute('draggable', 'false');
+
+        item.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            startDrag(item, e.clientX, e.clientY);
+        });
+
+        item.addEventListener('touchstart', (e) => {
+            const t = e.touches[0];
+            startDrag(item, t.clientX, t.clientY);
+        }, { passive: true });
+    });
+
+    document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+    document.addEventListener('mouseup', endDrag);
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', endDrag);
 }
