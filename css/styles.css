@@ -654,16 +654,17 @@ section {
   font: 400 18px/23px var(--font-mono);
   color: var(--dark-tertiary);
   text-align: center;
+  padding: 0 30px;
   list-style: none;
   margin-bottom: 30px;
 }
 
 .pricing__card-features li {
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
 .pricing__card-features-divider {
-  margin-top: 16px;
+  margin-top: 30px;
   font: 700 18px/23px var(--font-heading);
   color: var(--dark-tertiary);
   margin-bottom: 12px;
@@ -685,6 +686,7 @@ section {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
@@ -699,6 +701,7 @@ section {
   font: 700 28px/34px var(--font-heading);
   color: rgba(10, 14, 26, 0.8);
 }
+
 
 /* ===========================================
    FAQ SECTION
