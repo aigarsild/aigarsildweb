@@ -4,18 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Aigar Sild — design engineer based in Estonia. I design and build digital products end-to-end, powered by AI.">
-  <meta name="keywords" content="design engineer, product design, web development, AI integration, fullstack, SaaS, Estonia, EU">
+  <meta name="description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
+  <meta name="keywords" content="SaaS development, MVP builder, product design, startup, design engineer, fullstack, Estonia, EU">
   <meta name="author" content="Aigar Sild">
 
-  <title>Aigar Sild | Design Engineer</title>
+  <title>Aigar Sild | From Idea to Live Product in 4 Weeks</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Aigar Sild | Design Engineer">
-  <meta property="og:description"
-    content="I design and build digital products end-to-end — brand, interface, and production code. Powered by AI.">
+  <meta property="og:title" content="Aigar Sild | From Idea to Live Product in 4 Weeks">
+  <meta property="og:description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aigarsild.com">
   <meta property="og:image" content="https://aigarsild.com/assets/og-image.png">
@@ -24,17 +22,21 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aigar Sild | Design Engineer">
-  <meta name="twitter:description" content="I design and build digital products end-to-end — brand, interface, and production code. Powered by AI.">
+  <meta name="twitter:title" content="Aigar Sild | From Idea to Live Product in 4 Weeks">
+  <meta name="twitter:description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
   <meta name="twitter:image" content="https://aigarsild.com/assets/og-image.png">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
+  <!-- Geist Mono loaded via @font-face in CSS -->
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 
 <body>
@@ -46,241 +48,281 @@
       <a href="index.html" class="nav__logo">
         <img src="assets/as-logo.svg" alt="Aigar Sild">
       </a>
-      
-      <button class="nav__toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      
-      <ul class="nav__menu">
-        <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
-        <li><a href="about.html" class="nav__link">About</a></li>
-        <li><a href="services.html" class="nav__link">Services</a></li>
-        <li><a href="case-studies.html" class="nav__link">Case Studies</a></li>
-        <li><a href="contact.html" class="nav__link">Contact</a></li>
-      </ul>
     </div>
   </nav>
 
   <!-- ============================================
        HERO SECTION
        ============================================ -->
-  <section class="hero" id="home">
-    <!-- Hero Blob -->
-    <img src="assets/hero-blob.svg" alt="" class="hero__blob" aria-hidden="true">
-
-    <!-- Rotated Name -->
-    <div class="hero__name">aigar sild</div>
-
+  <section class="hero" id="hero">
+    <!-- Gradient backdrop — contained within hero -->
+    <div class="gradient-backdrop" id="gradient-backdrop" aria-hidden="true">
+      <canvas class="hero__bg-canvas" id="hero-canvas"></canvas>
+    </div>
     <div class="hero__container">
-      <!-- Main Content -->
       <div class="hero__content">
-        <p class="hero__subtitle">I design it, I build it, I ship it.</p>
-        <h1 class="hero__headline">Building exceptional user experiences from brand to production code.</h1>
-        <p class="hero__tagline">No handoffs between design and dev. You ship faster and change direction whenever you need to.</p>
+        <span class="hero__badge">&#10022; Design, build, and ship &mdash; in 4 weeks.</span>
+        <h1 class="hero__headline">From idea to live product in 4 weeks.</h1>
+        <p class="hero__subtitle">Founders can spend months and tens of thousands before learning if their idea works. I get you to market in 4 weeks &mdash; design, code, and deployment. Starting at &euro;8,000.</p>
         <div class="hero__cta">
-          <a href="case-studies.html" class="pill-badge pill-badge--lime">see my work</a>
-          <a href="contact.html" class="pill-badge pill-badge--pink">get in touch</a>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
+          <a href="#pricing" class="btn btn--light">Pricing &darr;</a>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Trusted By - Infinite Marquee (below the first screen) -->
-  <div class="hero__trusted">
-    <p class="hero__trusted-label">Trusted by:</p>
-    <div class="hero__marquee">
-      <div class="hero__marquee-track">
-        <!-- First set of logos -->
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Flowdesk.svg" alt="Flowdesk">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Kauplusrattapood.webp" alt="Kauplus Rattapood">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Hykell.webp" alt="Hykell">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Birchtree.svg" alt="Birch Tree Analytics">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Avora.svg" alt="Avora">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Cyclegrounds.svg" alt="Cyclegrounds">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Hypoteek24.svg" alt="Hüpoteek24">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/RAKS.webp" alt="RAKS">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/kaubamaja.png" alt="Kaubamaja">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/selver-1.png" alt="Selver">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/bauhaus-2.png" alt="Bauhaus">
-        </div>
-        <!-- Duplicate set for seamless loop -->
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Flowdesk.svg" alt="Flowdesk">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Kauplusrattapood.webp" alt="Kauplus Rattapood">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Hykell.webp" alt="Hykell">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Birchtree.svg" alt="Birch Tree Analytics">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Avora.svg" alt="Avora">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Cyclegrounds.svg" alt="Cyclegrounds">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/Hypoteek24.svg" alt="Hüpoteek24">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/RAKS.webp" alt="RAKS">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/kaubamaja.png" alt="Kaubamaja">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/selver-1.png" alt="Selver">
-        </div>
-        <div class="hero__logo">
-          <img src="assets/icons/hero-icons/bauhaus-2.png" alt="Bauhaus">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================
-       SERVICES SECTION
-       ============================================ -->
   <!-- ============================================
        SERVICES SECTION
        ============================================ -->
   <section class="services" id="services">
-    <div class="services__blobs">
-      <!-- Blue blob acting as background for text -->
-      <img src="assets/services-blob.svg" alt="" class="services__blob services__blob--blue" aria-hidden="true">
-      <!-- Yellow accent blob at bottom right -->
-      <img src="assets/yellow-blob.svg" alt="" class="services__blob services__blob--yellow" aria-hidden="true">
-    </div>
-
     <div class="services__container">
-      <div class="services__text-overlay">
-        <h2 class="services__item">Product Design & Build</h2>
-        <h2 class="services__item">Website & Webshop</h2>
-        <h2 class="services__item">AI Integration & Automation</h2>
+      <h2 class="services__title">Everything you need to launch</h2>
 
-        <div class="services__cta">
-          <a href="services.html" class="pill-badge pill-badge--pink">see how it works</a>
+      <div class="services__list">
+        <div class="services__item">
+          <h3 class="services__item-title">Brand identity</h3>
+          <p class="services__item-desc">Logo, colors, type system that fits your market.</p>
+        </div>
+        <div class="services__item">
+          <h3 class="services__item-title">UI/UX design</h3>
+          <p class="services__item-desc">Straight to high-fidelity design in Figma, no wasted rounds.</p>
+        </div>
+        <div class="services__item">
+          <h3 class="services__item-title">Launch-ready product</h3>
+          <p class="services__item-desc">Not a prototype. A real product your customers can use and pay for.</p>
+        </div>
+        <div class="services__item">
+          <h3 class="services__item-title">Production code</h3>
+          <p class="services__item-desc">React/Next.js frontend, Supabase backend, deployed on Vercel. Modern stack, no vendor lock-in, easy to hand off.</p>
+        </div>
+        <div class="services__item">
+          <h3 class="services__item-title">Clear communication</h3>
+          <p class="services__item-desc">Weekly updates, async Slack access, and no surprises. You always know where the project stands.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       PORTFOLIO SECTION
+       TIMELINE SECTION
        ============================================ -->
-  <section class="portfolio" id="work">
-    <div class="portfolio__blobs">
-      <img src="assets/casestudies-blob.svg" alt="" class="portfolio__blob portfolio__blob--blue" aria-hidden="true">
+  <section class="timeline" id="process">
+    <div class="timeline__container">
+      <h2 class="timeline__title">4 weeks. That's it.</h2>
+
+      <div class="timeline__grid">
+        <div class="timeline__card">
+          <span class="timeline__card-week">Week 1</span>
+          <h3 class="timeline__card-title">Design &amp; Build</h3>
+          <p class="timeline__card-desc">Brand identity + key screens in Figma to set direction. Design and development overlap &mdash; once the foundation is set, building starts immediately.</p>
+        </div>
+        <div class="timeline__card">
+          <span class="timeline__card-week">Week 1-3</span>
+          <h3 class="timeline__card-title">Iterate</h3>
+          <p class="timeline__card-desc">Production code, backend, integrations. Design decisions happen in code guided by the brand and UI guide. You follow progress on staging.</p>
+        </div>
+        <div class="timeline__card">
+          <span class="timeline__card-week">Week 4</span>
+          <h3 class="timeline__card-title">Launch</h3>
+          <p class="timeline__card-desc">Testing, deployment, handover. Your product goes live.</p>
+        </div>
+        <div class="timeline__card">
+          <span class="timeline__card-week">After launch</span>
+          <h3 class="timeline__card-title">Fractional CTO</h3>
+          <p class="timeline__card-desc">If there are free slots we can continue with technical tasks and strategy.</p>
+        </div>
+      </div>
+
+      <p class="timeline__note">Ongoing development and maintenance at &euro;80/hour. Most clients stay on.</p>
     </div>
+  </section>
 
-    <div class="portfolio__container">
-      <div class="portfolio__content">
-        <h2 class="portfolio__headline">
-          Selected<br>projects
-        </h2>
+  <!-- ============================================
+       AFTER LAUNCH SECTION
+       ============================================ -->
+  <section class="after-launch" id="after-launch">
+    <div class="after-launch__container">
+      <h2 class="after-launch__title">After the MVP launch</h2>
+      <p class="after-launch__subtitle">Every project ships with these extras — included in the package.</p>
 
-        <div class="portfolio__cta">
-          <a href="case-studies.html" class="pill-badge pill-badge--lime">see all projects</a>
+      <div class="after-launch__list">
+        <div class="after-launch__item">
+          <h3 class="after-launch__item-title">Post-build polish</h3>
+          <p class="after-launch__item-desc">One round of feedback and refinements after launch to make sure everything feels right.</p>
+        </div>
+        <div class="after-launch__item">
+          <h3 class="after-launch__item-title">Handoff doc</h3>
+          <p class="after-launch__item-desc">Technical documentation and brand guide so any developer or designer can pick up where I left off.</p>
+        </div>
+        <div class="after-launch__item">
+          <h3 class="after-launch__item-title">Video walkthrough</h3>
+          <p class="after-launch__item-desc">A video walkthrough of the product for non-technical stakeholders and team members.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SUCCESS STORIES SECTION
+       ============================================ -->
+  <section class="stories" id="work">
+    <div class="stories__container">
+      <h2 class="stories__title">Success stories</h2>
+
+      <div class="stories__grid">
+        <!-- Top row: two columns -->
+        <div class="stories__card">
+          <div class="stories__card-image">
+            <img src="assets/flowdesk.svg" alt="Flowdesk dashboard" loading="lazy" decoding="async">
+          </div>
+          <div class="stories__card-info">
+            <h3 class="stories__card-name">Flowdesk</h3>
+            <p class="stories__card-desc">SaaS for workshop businesses. AI-powered job tracking, bookings, and inventory. Built on Next.js, Supabase, and Vercel.</p>
+            <a href="https://flowdesk.ee" target="_blank" rel="noopener" class="stories__card-link">flowdesk.ee &rarr;</a>
+            <div class="stories__card-tags">
+              <span class="stories__tag">Brand</span>
+              <span class="stories__tag">SaaS</span>
+              <span class="stories__tag">Product Design</span>
+              <span class="stories__tag">Next.js</span>
+            </div>
+          </div>
         </div>
 
-        <div class="portfolio__showcase">
-          <div class="portfolio__ui-blob">
-            <img src="assets/case-studies/kauplusrattapood.webp" alt="Rattapood" class="portfolio__ui-item" loading="lazy" decoding="async"
-              data-project="Kauplus Rattapood" data-desc="Revenue doubled after digital rebuild" data-link="case-studies/rattapood.html">
-            <img src="assets/case-studies/hykell.webp" alt="Hykell" class="portfolio__ui-item portfolio__ui-item--large" loading="lazy" decoding="async"
-              data-project="Hykell.com" data-desc="Brand to product dashboard in weeks" data-link="case-studies/hykell.html">
-            <img src="assets/case-studies/flowdesk.webp" alt="Flowdesk" class="portfolio__ui-item portfolio__ui-item--large" loading="lazy" decoding="async"
-              data-project="Flowdesk.ee" data-desc="Full SaaS built and used in my own business" data-link="case-studies/flowdesk.html">
-            <img src="assets/case-studies/avora.webp" alt="Avora" class="portfolio__ui-item" loading="lazy" decoding="async"
-              data-project="Avora.ee" data-desc="8 units sold in the first year" data-link="case-studies/avora.html">
-            <img src="assets/case-studies/cyclegrounds.webp" alt="Cyclegrounds" class="portfolio__ui-item" loading="lazy" decoding="async"
-              data-project="Cyclegrounds" data-desc="International cycling webshop" data-link="case-studies/cyclegrounds.html">
-            <img src="assets/case-studies/hypoteek24.webp" alt="Hüpoteek24" class="portfolio__ui-item" loading="lazy" decoding="async"
-              data-project="Hypoteek24.ee" data-desc="Trust-building digital presence for finance" data-link="case-studies/hypoteek24.html">
-            <img src="assets/case-studies/birtchtreeanalytics.webp" alt="Birch Tree Analytics" class="portfolio__ui-item" loading="lazy" decoding="async"
-              data-project="Birch Tree Analytics" data-desc="Brand + website for data analytics" data-link="case-studies/birchtreeanalytics.html">
+        <div class="stories__card">
+          <div class="stories__card-image">
+            <img src="assets/hykell.svg" alt="Hykell dashboard" loading="lazy" decoding="async">
+          </div>
+          <div class="stories__card-info">
+            <h3 class="stories__card-name">Hykell</h3>
+            <p class="stories__card-desc">Cloud cost optimization dashboard. Full product built on Next.js with AWS services &mdash; Cognito, Amplify, and QuickSight.</p>
+            <a href="https://hykell.com" target="_blank" rel="noopener" class="stories__card-link">hykell.com &rarr;</a>
+            <div class="stories__card-tags">
+              <span class="stories__tag">SaaS</span>
+              <span class="stories__tag">Brand</span>
+              <span class="stories__tag">Next.js</span>
+              <span class="stories__tag">AWS</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Portfolio Info Box -->
-  <div class="portfolio-infobox" id="portfolioInfobox">
-    <div class="portfolio-infobox__card">
-      <button class="portfolio-infobox__close" id="infoboxClose" aria-label="Close">&times;</button>
-      <span class="portfolio-infobox__title" id="infoboxTitle"></span>
-      <span class="portfolio-infobox__desc" id="infoboxDesc"></span>
-      <a class="pill-badge pill-badge--blue portfolio-infobox__btn" id="infoboxLink" href="#">Read more</a>
-    </div>
-  </div>
-
   <!-- ============================================
-       WHY ONE PERSON
+       PRICING SECTION
        ============================================ -->
-  <section class="why-section">
-    <div class="why-section__container">
-      <h2 class="why-section__headline">Why one person</h2>
-      <div class="why-section__grid">
-        <div class="why-section__item">
-          <h3 class="why-section__title">Faster.</h3>
-          <p class="why-section__text">No handoffs, no waiting for someone else. When something needs to change, it changes today.</p>
+  <section class="pricing" id="pricing">
+    <h2 class="pricing__title">Pricing</h2>
+    <div class="pricing__container">
+      <canvas class="pricing__bg-canvas" id="pricing-canvas" aria-hidden="true"></canvas>
+      <div class="pricing__grid">
+        <!-- Left: tall Launch MVP card -->
+        <div class="pricing__card pricing__card--primary">
+          <span class="pricing__card-badge">4 week package</span>
+          <h3 class="pricing__card-name">Launch MVP</h3>
+          <div class="pricing__card-price">8000&euro; <span class="pricing__card-price-label">/one time</span></div>
+          <p class="pricing__card-desc">MVP in under 4 weeks. For founders with great ideas or companies in need of better internal tools.</p>
+          <ul class="pricing__card-features">
+            <li class="pricing__card-features-divider">Start today</li>
+            <li>Brand Design + Product Design</li>
+            <li>Full-stack AI development</li>
+            <li>Weekly revision meetings</li>
+            <li>2-3 Core features implementation</li>
+            <li>Integrations (Supabase, Google, Trello, etc)</li>
+            <li>Async communication via Slack</li>
+            <li>Hand-off guided process</li>
+            <li class="pricing__card-features-divider">After MVP launch</li>
+            <li>One round of post-build polish/feedback</li>
+            <li>A handoff doc for future devs</li>
+            <li>A video walkthrough for non-tech stakeholders</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
         </div>
-        <div class="why-section__item">
-          <h3 class="why-section__title">Systemic approach.</h3>
-          <p class="why-section__text">Brand, interface, and code are built as one system. Every decision reinforces the others instead of being made in isolation.</p>
-        </div>
-        <div class="why-section__item">
-          <h3 class="why-section__title">Aligned.</h3>
-          <p class="why-section__text">I understand what I designed because I'm the one building it. Nothing gets lost between Figma and code.</p>
+
+        <!-- Right column: two stacked blue cards -->
+        <div class="pricing__right">
+          <div class="pricing__card pricing__card--blue">
+            <span class="pricing__card-label">After launch</span>
+            <div class="pricing__card-price">80&euro; <span class="pricing__card-price-label">/ hour</span></div>
+          </div>
+          <div class="pricing__card pricing__card--blue">
+            <span class="pricing__card-label">Fractional CTO</span>
+            <div class="pricing__card-price">2000&euro; <span class="pricing__card-price-label">20h</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       CTA SECTION
+       FAQ SECTION
        ============================================ -->
-  <section class="cta-section" id="contact">
-    <img src="assets/services-blob.svg" alt="" class="cta-section__blob" aria-hidden="true">
+  <section class="faq" id="faq">
+    <div class="faq__container">
+      <h2 class="faq__title">Common questions</h2>
 
-    <div class="cta-section__container">
-      <h2 class="cta-section__headline">
-        Have a project in mind?
-      </h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <h3 class="faq__question">Can you really build a product in 4 weeks?</h3>
+          <p class="faq__answer">Yes. The scope is focused on 2-3 core features that prove your idea works. This isn't a half-baked prototype &mdash; it's a real product your customers can use and pay for.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">Will it scale when I get users?</h3>
+          <p class="faq__answer">The stack (Next.js + Supabase + Vercel) is built for scale. The same tools power products with millions of users. You won't need to rebuild when things take off.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">What happens after the 4 weeks?</h3>
+          <p class="faq__answer">You get a full handoff &mdash; documentation, video walkthrough, and one round of polish. Most clients continue with ongoing development at &euro;80/hour or a fractional CTO arrangement.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">What if I'm not technical?</h3>
+          <p class="faq__answer">That's the whole point. You bring the idea and domain knowledge, I handle everything else &mdash; design, code, deployment, and handoff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <p class="cta-section__description">
-        Let's talk. I'll give you an honest take on what makes sense and what doesn't.
-      </p>
+  <!-- ============================================
+       CONTACT SECTION
+       ============================================ -->
+  <section class="contact" id="contact">
+    <div class="contact__container">
+      <h2 class="contact__title">Have a project? Let's talk.</h2>
 
-      <a href="contact.html" class="pill-badge pill-badge--pink cta-section__pill-btn">get in touch</a>
+      <div class="contact__grid">
+        <!-- Left: Book a call -->
+        <div class="contact__option">
+          <h3 class="contact__option-title">Book a call</h3>
+          <p class="contact__option-desc">15-minute video call to discuss your project.</p>
+          <a href="#"
+             onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aigarsild/30min'});return false;"
+             class="btn btn--dark">Book a call &rarr;</a>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="contact__option">
+          <h3 class="contact__option-title">Send a message</h3>
+          <p class="contact__option-desc">Describe your project and I'll reply within 24 hours.</p>
+          <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hidden"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
+            <div class="contact__field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required class="contact__input" placeholder="Name">
+            </div>
+            <div class="contact__field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required class="contact__input" placeholder="Email">
+            </div>
+            <div class="contact__field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required class="contact__input contact__textarea" placeholder="Tell me about your project"></textarea>
+            </div>
+            <button type="submit" class="btn btn--dark">Send message &rarr;</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -289,42 +331,38 @@
        ============================================ -->
   <footer class="footer">
     <div class="footer__container">
+      <canvas class="footer__bg-canvas" id="footer-canvas" aria-hidden="true"></canvas>
       <div class="footer__main">
         <div class="footer__brand">
           <a href="index.html" class="footer__logo">
             <img src="assets/as-logo.svg" alt="Aigar Sild">
           </a>
-          <p class="footer__tagline">
-            Design engineer based in Estonia. I design and build digital products end-to-end — brand, interface, and production code.
-          </p>
+          <p class="footer__tagline">Design engineer based in Estonia. I design and build digital products end-to-end &mdash; brand, interface, and production code.</p>
         </div>
 
         <div class="footer__social">
-          <a href="https://www.linkedin.com/in/aigar-sild/" target="_blank" rel="noopener" class="footer__social-link"
-            aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/aigar-sild/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
           </a>
-          <a href="https://dribbble.com/aigar_sild" target="_blank" rel="noopener" class="footer__social-link"
-            aria-label="Dribbble">
+          <a href="https://dribbble.com/aigar_sild" target="_blank" rel="noopener" class="footer__social-link" aria-label="Dribbble">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.428 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z" />
+              <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.428 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
             </svg>
           </a>
         </div>
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copyright">© 2026 Aigar Sild. All rights reserved.</p>
+        <p class="footer__copyright">aigar sild / 2026</p>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 
 </html>
