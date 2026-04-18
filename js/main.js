@@ -493,9 +493,13 @@ function initScrollAnimations() {
     // Select all elements that should animate on scroll
     const selectors = [
         '.timeline__card',
+        '.timeline__callout',
         '.stories__card',
-        '.pricing__card',
-        '.pricing__card--primary',
+        '.offer-card',
+        '.about__body p',
+        '.build__step',
+        '.build__proof',
+        '.testimonial',
         '.contact__option'
     ].join(', ');
 

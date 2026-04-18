@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
-  <meta name="keywords" content="SaaS development, MVP builder, product design, startup, design engineer, fullstack, Estonia, EU">
+  <meta name="description" content="One senior designer-engineer. Launch-ready MVPs, internal tools, and brand identities — in weeks, not quarters.">
+  <meta name="keywords" content="MVP builder, internal tools, custom software, product design, brand identity, design engineer, Next.js, Supabase, Estonia, EU">
   <meta name="author" content="Aigar Sild">
 
-  <title>Aigar Sild | From Idea to Live Product in 4 Weeks</title>
+  <title>Aigar Sild | Brand, Product, and Custom Software</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Aigar Sild | From Idea to Live Product in 4 Weeks">
-  <meta property="og:description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
+  <meta property="og:title" content="Aigar Sild | Brand, Product, and Custom Software">
+  <meta property="og:description" content="One senior designer-engineer. Launch-ready MVPs, internal tools, and brand identities — in weeks, not quarters.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aigarsild.com">
   <meta property="og:image" content="https://aigarsild.com/assets/og-image.png">
@@ -22,8 +22,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aigar Sild | From Idea to Live Product in 4 Weeks">
-  <meta name="twitter:description" content="Design, interface, and production code — from zero to launched SaaS in 4 weeks. Starting at €8,000.">
+  <meta name="twitter:title" content="Aigar Sild | Brand, Product, and Custom Software">
+  <meta name="twitter:description" content="One senior designer-engineer. Launch-ready MVPs, internal tools, and brand identities — in weeks, not quarters.">
   <meta name="twitter:image" content="https://aigarsild.com/assets/og-image.png">
 
   <!-- Fonts -->
@@ -61,45 +61,123 @@
     </div>
     <div class="hero__container">
       <div class="hero__content">
-        <span class="hero__badge">&#10022; Design, build, and ship &mdash; in 4 weeks.</span>
-        <h1 class="hero__headline">From idea to live product in 4 weeks.</h1>
-        <p class="hero__subtitle">Founders can spend months and tens of thousands before learning if their idea works. I get you to market in 4 weeks &mdash; design, code, and deployment. Starting at &euro;8,000.</p>
+        <span class="hero__badge">&#10022; Design, build, and ship.</span>
+        <h1 class="hero__headline">Brand, product, and custom software &mdash; for founders and operators who need to ship.</h1>
+        <p class="hero__subtitle">One senior designer-engineer. I build launch-ready MVPs, internal tools, and brand identities &mdash; in weeks, not quarters. So you ship while competitors are still hiring.</p>
         <div class="hero__cta">
           <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
-          <a href="#pricing" class="btn btn--light">Pricing &darr;</a>
+          <a href="#offers" class="btn btn--light">See offers &darr;</a>
         </div>
+      </div>
+    </div>
+
+    <div class="hero__logos" aria-label="Selected clients and brands">
+      <div class="hero__logos-track">
+        <img src="assets/logos/Avora.svg" alt="Avora" class="hero__logo">
+        <img src="assets/logos/Birchtree.svg" alt="Birch Tree Analytics" class="hero__logo">
+        <img src="assets/logos/Cyclegrounds.svg" alt="Cyclegrounds" class="hero__logo">
+        <img src="assets/logos/Flowdesk.svg" alt="Flowdesk" class="hero__logo">
+        <img src="assets/logos/Hykell.png" alt="Hykell" class="hero__logo">
+        <img src="assets/logos/Hypoteek24.svg" alt="Hüpoteek24" class="hero__logo">
+        <img src="assets/logos/Kauplusrattapood.svg" alt="Kauplus Rattapood" class="hero__logo">
+        <img src="assets/logos/RAKS.svg" alt="RAKS" class="hero__logo">
+        <!-- duplicate for seamless loop -->
+        <img src="assets/logos/Avora.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Birchtree.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Cyclegrounds.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Flowdesk.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Hykell.png" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Hypoteek24.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/Kauplusrattapood.svg" alt="" aria-hidden="true" class="hero__logo">
+        <img src="assets/logos/RAKS.svg" alt="" aria-hidden="true" class="hero__logo">
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       SERVICES SECTION
+       OFFERS SECTION (What I do)
        ============================================ -->
-  <section class="services" id="services">
-    <div class="services__container">
-      <h2 class="services__title">Everything you need to launch</h2>
+  <section class="offers" id="offers">
+    <div class="offers__container">
+      <canvas class="offers__bg-canvas" id="pricing-canvas" aria-hidden="true"></canvas>
+      <div class="offers__header">
+        <h2 class="offers__title">What I do</h2>
+        <p class="offers__subtitle">Four offers. Pick the one that sounds like your situation.</p>
+      </div>
 
-      <div class="services__list">
-        <div class="services__item">
-          <h3 class="services__item-title">Brand identity</h3>
-          <p class="services__item-desc">Logo, colors, type system that fits your market.</p>
-        </div>
-        <div class="services__item">
-          <h3 class="services__item-title">UI/UX design</h3>
-          <p class="services__item-desc">Straight to high-fidelity design in Figma, no wasted rounds.</p>
-        </div>
-        <div class="services__item">
-          <h3 class="services__item-title">Launch-ready product</h3>
-          <p class="services__item-desc">Not a prototype. A real product your customers can use and pay for.</p>
-        </div>
-        <div class="services__item">
-          <h3 class="services__item-title">Production code</h3>
-          <p class="services__item-desc">React/Next.js frontend, Supabase backend, deployed on Vercel. Modern stack, no vendor lock-in, easy to hand off.</p>
-        </div>
-        <div class="services__item">
-          <h3 class="services__item-title">Clear communication</h3>
-          <p class="services__item-desc">Weekly updates, async Slack access, and no surprises. You always know where the project stands.</p>
-        </div>
+      <div class="offers__grid">
+        <!-- 1. MVP Build -->
+        <article class="offer-card">
+          <header class="offer-card__header">
+            <h3 class="offer-card__name">MVP Build</h3>
+            <div class="offer-card__price">from &euro;8,000</div>
+          </header>
+          <p class="offer-card__meta">4 weeks &bull; brand + site + working product</p>
+          <p class="offer-card__desc">For founders launching something new. Complete package: brand identity, marketing site, and core product flows designed, built in Next.js + Supabase, and deployed to production. You ship something real at the end of week 4.</p>
+          <ul class="offer-card__features">
+            <li>Brand identity + marketing site</li>
+            <li>2&ndash;3 core product flows in Next.js + Supabase</li>
+            <li>Deployed to production on Vercel</li>
+            <li>Handoff doc + video walkthrough</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
+        </article>
+
+        <!-- 2. Internal Tool Build -->
+        <article class="offer-card">
+          <header class="offer-card__header">
+            <h3 class="offer-card__name">Internal Tool Build</h3>
+            <div class="offer-card__price">from &euro;12,000</div>
+          </header>
+          <p class="offer-card__meta">6&ndash;10 weeks &bull; custom software for how your business actually runs</p>
+          <p class="offer-card__desc">For operators who&rsquo;ve outgrown spreadsheets, Trello, and duct-taped SaaS tools. I build production-grade internal platforms &mdash; order management, service workflows, inventory, CRM, dashboards &mdash; tailored to exactly how your team works. Proper software, owned by you, not another monthly subscription.</p>
+          <ul class="offer-card__features">
+            <li>Custom web app in Next.js + Supabase</li>
+            <li>Multi-user auth, roles, and permissions</li>
+            <li>Deployed on your infrastructure or managed by me</li>
+            <li>30 days of post-launch support included</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
+        </article>
+
+        <!-- 3. Brand Sprint -->
+        <article class="offer-card">
+          <header class="offer-card__header">
+            <h3 class="offer-card__name">Brand Sprint</h3>
+            <div class="offer-card__price">&euro;5,000</div>
+          </header>
+          <p class="offer-card__meta">2 weeks &bull; complete visual identity</p>
+          <p class="offer-card__desc">Logo system, color, typography, brand guidelines, and an AI brand prompt library. For founders who have a product and need identity to match.</p>
+          <ul class="offer-card__features">
+            <li>Logo system + wordmark</li>
+            <li>Color palette + typography scale</li>
+            <li>Brand guidelines (PDF)</li>
+            <li>AI brand prompt library</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
+        </article>
+
+        <!-- 4. Design & Build Retainer -->
+        <article class="offer-card">
+          <header class="offer-card__header">
+            <h3 class="offer-card__name">Design &amp; Build Retainer</h3>
+            <div class="offer-card__price">&euro;2,900<span class="offer-card__price-suffix">/month</span></div>
+          </header>
+          <p class="offer-card__meta">Ongoing design and development support</p>
+          <p class="offer-card__desc">For teams post-launch who need continuous iteration. New features, landing pages, internal tool improvements, brand evolution &mdash; shipped weekly. One or two retainer slots open at a time.</p>
+          <ul class="offer-card__features">
+            <li>Weekly shipped work</li>
+            <li>Design + development + brand under one roof</li>
+            <li>Async communication via Slack</li>
+            <li>One or two slots open at a time</li>
+          </ul>
+          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
+        </article>
+      </div>
+
+      <div class="offers__audit">
+        <p class="offers__audit-line"><strong>Not sure where to start?</strong> &rarr; Brand &amp; Product Audit &mdash; &euro;490</p>
+        <p class="offers__audit-desc">3-day async review of your current brand, site, or product, with a written report and a 30-min walkthrough. Often the fastest way to figure out what&rsquo;s actually worth fixing.</p>
       </div>
     </div>
   </section>
@@ -134,31 +212,75 @@
         </div>
       </div>
 
+      <div class="timeline__callout">
+        <h3 class="timeline__callout-title">How can one person ship this fast?</h3>
+        <p class="timeline__callout-text">I&rsquo;ve been building with AI since the earliest serious models &mdash; not as a chatbot on the side, but as the core of how I ship. Figma designs become structured spec files that AI agents build against. Claude writes the code, Codex reviews it, automated tests run on every change, and I&rsquo;m in the loop at every step making the calls. My SaaS <a href="https://flowdesk.ee" target="_blank" rel="noopener" class="timeline__callout-link">Flowdesk</a> has been built this way from day one &mdash; over a year in production with real users at Sportland.</p>
+        <p class="timeline__callout-text timeline__callout-text--em">This is why 4 weeks is realistic instead of optimistic.</p>
+      </div>
+
       <p class="timeline__note">Ongoing development and maintenance at &euro;80/hour. Most clients stay on.</p>
     </div>
   </section>
 
   <!-- ============================================
-       AFTER LAUNCH SECTION
+       ABOUT SECTION
        ============================================ -->
-  <section class="after-launch" id="after-launch">
-    <div class="after-launch__container">
-      <h2 class="after-launch__title">After the MVP launch</h2>
-      <p class="after-launch__subtitle">Every project ships with these extras — included in the package.</p>
+  <section class="about" id="about">
+    <div class="about__container">
+      <span class="about__eyebrow">About</span>
+      <h2 class="about__title">I build for founders and operators who need to ship.</h2>
+      <div class="about__body">
+        <p>I help pre-seed and seed-stage founders launch real products. And I build internal tools for established businesses &mdash; workshops, service companies, distributors, agencies &mdash; who are ready to stop running their operations on spreadsheets and want software built for how their team actually works.</p>
+        <p>I&rsquo;m Aigar. A designer and engineer based in Tallinn. I&rsquo;ve spent the last 10+ years working across brand, product design, and full-stack development &mdash; the combination most early-stage founders and operators actually need but rarely find in one person.</p>
+        <p>Before going solo, I built and still run Kauplus Rattapood, a bike shop in Laagri. That&rsquo;s where Flowdesk started &mdash; I built our workshop management software because nothing on the market fit how we actually worked. That experience is the reason I understand internal tools from both sides: the operator who&rsquo;s frustrated with tools that don&rsquo;t fit, and the engineer who has to build something that actually ships.</p>
+        <p>I work with one or two clients at a time. That&rsquo;s deliberate. It means you get senior attention from start to finish, not a junior rotating between projects.</p>
+      </div>
+    </div>
+  </section>
 
-      <div class="after-launch__list">
-        <div class="after-launch__item">
-          <h3 class="after-launch__item-title">Post-build polish</h3>
-          <p class="after-launch__item-desc">One round of feedback and refinements after launch to make sure everything feels right.</p>
-        </div>
-        <div class="after-launch__item">
-          <h3 class="after-launch__item-title">Handoff doc</h3>
-          <p class="after-launch__item-desc">Technical documentation and brand guide so any developer or designer can pick up where I left off.</p>
-        </div>
-        <div class="after-launch__item">
-          <h3 class="after-launch__item-title">Video walkthrough</h3>
-          <p class="after-launch__item-desc">A video walkthrough of the product for non-technical stakeholders and team members.</p>
-        </div>
+  <!-- ============================================
+       HOW I BUILD SECTION
+       ============================================ -->
+  <section class="build" id="how-i-build">
+    <div class="build__container">
+      <span class="build__eyebrow">How I build</span>
+      <h2 class="build__title">I&rsquo;m an AI-native builder.</h2>
+      <p class="build__lede">Most freelancers say they &ldquo;use AI.&rdquo; I build with AI as the core of my development process &mdash; and I&rsquo;ve been doing it long enough to know what works and what doesn&rsquo;t.</p>
+
+      <p class="build__subhead">Here&rsquo;s how a typical build actually runs:</p>
+      <ol class="build__steps">
+        <li class="build__step">
+          <h3 class="build__step-title">Design first, in Figma.</h3>
+          <p class="build__step-desc">Every screen, every flow, every component. Designs become the source of truth the rest of the system builds from.</p>
+        </li>
+        <li class="build__step">
+          <h3 class="build__step-title">Skill files translate design into code context.</h3>
+          <p class="build__step-desc">I convert Figma work into structured spec files &mdash; component patterns, data models, design tokens, edge cases &mdash; that AI agents can build against reliably. This is the part most people skip, and it&rsquo;s why their AI-generated code is messy.</p>
+        </li>
+        <li class="build__step">
+          <h3 class="build__step-title">Claude writes the code. Codex reviews it. Tests run automatically.</h3>
+          <p class="build__step-desc">Each stage has a different model doing what it&rsquo;s best at. Nothing ships without passing review and tests.</p>
+        </li>
+        <li class="build__step">
+          <h3 class="build__step-title">I&rsquo;m in the loop at every step.</h3>
+          <p class="build__step-desc">AI writes fast; I decide what&rsquo;s actually right. Architecture calls, product decisions, edge cases, visual judgment &mdash; those are mine. The AI handles the volume, I handle the taste.</p>
+        </li>
+      </ol>
+
+      <div class="build__proof">
+        <h3 class="build__proof-title">Flowdesk is proof this works.</h3>
+        <p class="build__proof-text">My own SaaS, <a href="https://flowdesk.ee" target="_blank" rel="noopener" class="build__link">flowdesk.ee</a>, has been built this way from day one. It&rsquo;s been in active development for over a year, with real users on production for 6+ months, including Sportland &mdash; one of the largest sports retailers in the Nordics. Flowdesk also runs AI agents in production that handle their own bugs: a bot pulls bug tickets from Trello and submits PRs to fix them, and another AI chats with users directly to collect bug reports.</p>
+        <p class="build__proof-text">If you want to see it running, I can set you up with a test account.</p>
+      </div>
+
+      <div class="build__outcome">
+        <p class="build__subhead">What this means for your project:</p>
+        <ul class="build__outcome-list">
+          <li>2&ndash;4 week build timelines that other people quote 3&ndash;6 months for</li>
+          <li>Higher code quality than most solo developers, because review and testing are automated and ruthless</li>
+          <li>Senior judgment on every decision, because my time is spent on the calls that matter, not on the typing</li>
+          <li>Lower cost than an agency, because I&rsquo;m not paying five salaries to coordinate</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -227,49 +349,30 @@
   </section>
 
   <!-- ============================================
-       PRICING SECTION
+       TESTIMONIALS SECTION
        ============================================ -->
-  <section class="pricing" id="pricing">
-    <h2 class="pricing__title">Pricing</h2>
-    <div class="pricing__container">
-      <canvas class="pricing__bg-canvas" id="pricing-canvas" aria-hidden="true"></canvas>
-      <div class="pricing__grid">
-        <!-- Left: tall Launch MVP card -->
-        <div class="pricing__card pricing__card--primary">
-          <span class="pricing__card-badge">4 week package</span>
-          <h3 class="pricing__card-name">Launch MVP</h3>
-          <div class="pricing__card-price">8000&euro; <span class="pricing__card-price-label">/one time</span></div>
-          <p class="pricing__card-desc">MVP in under 4 weeks. For founders with great ideas or companies in need of better internal tools.</p>
-          <ul class="pricing__card-features">
-            <li class="pricing__card-features-divider">Start today</li>
-            <li>Brand Design + Product Design</li>
-            <li>Full-stack AI development</li>
-            <li>Weekly revision meetings</li>
-            <li>2-3 Core features implementation</li>
-            <li>Integrations (Supabase, Google, Trello, etc)</li>
-            <li>Async communication via Slack</li>
-            <li>Hand-off guided process</li>
-            <li class="pricing__card-features-divider">After MVP launch</li>
-            <li>One round of post-build polish/feedback</li>
-            <li>A handoff doc for future devs</li>
-            <li>A video walkthrough for non-tech stakeholders</li>
-          </ul>
-          <a href="#contact" class="btn btn--dark">Book a call &rarr;</a>
-        </div>
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials__container">
+      <div class="testimonials__header">
+        <span class="testimonials__badge">&#10022; Client Stories</span>
+        <h2 class="testimonials__title">What clients say</h2>
+      </div>
 
-        <!-- Right column: two stacked blue cards -->
-        <div class="pricing__right">
-          <div class="pricing__card pricing__card--blue">
-            <span class="pricing__card-label">After launch</span>
-            <div class="pricing__card-price">80&euro; <span class="pricing__card-price-label">/ hour</span></div>
-            <p class="pricing__card-desc">Ongoing maintenance and development to keep your product growing.</p>
-          </div>
-          <div class="pricing__card pricing__card--blue">
-            <span class="pricing__card-label">Fractional CTO</span>
-            <div class="pricing__card-price">2000&euro; <span class="pricing__card-price-label">20h</span></div>
-            <p class="pricing__card-desc">Technical strategy, architecture decisions, and team guidance on retainer.</p>
-          </div>
-        </div>
+      <div class="testimonials__grid">
+        <blockquote class="testimonial">
+          <p class="testimonial__quote">&ldquo;Understood our business model deeply and delivered both brand and website with impressive speed and thoroughness. Aigar&rsquo;s design vision aligned perfectly with ours.&rdquo;</p>
+          <cite class="testimonial__author">Avora</cite>
+        </blockquote>
+
+        <blockquote class="testimonial">
+          <p class="testimonial__quote">&ldquo;Easy to communicate with &mdash; asks the right questions to understand our needs perfectly, then delivers exactly what we envisioned.&rdquo;</p>
+          <cite class="testimonial__author">Birch Tree Analytics</cite>
+        </blockquote>
+
+        <blockquote class="testimonial">
+          <p class="testimonial__quote">&ldquo;Everything from logo to code in one place. Exceptional quality and a seamless experience from start to finish.&rdquo;</p>
+          <cite class="testimonial__author">Kauplus Rattapood</cite>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -284,19 +387,31 @@
       <div class="faq__list">
         <div class="faq__item">
           <h3 class="faq__question">Can you really build a product in 4 weeks?</h3>
-          <p class="faq__answer">Yes. The scope is focused on 2-3 core features that prove your idea works. This isn't a half-baked prototype &mdash; it's a real product your customers can use and pay for.</p>
+          <p class="faq__answer">Yes, for MVP scope. I focus on 2&ndash;3 core features that prove your idea works &mdash; a real product your customers can use and pay for, not a half-baked prototype. Internal tool builds run longer (6&ndash;10 weeks) because the complexity is in the business logic, not the surface area.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">Why hire you to build custom software instead of just buying a SaaS?</h3>
+          <p class="faq__answer">Sometimes you shouldn&rsquo;t &mdash; off-the-shelf SaaS is the right answer when your process is standard. But when you&rsquo;re spending hours every week fighting a tool to do what you actually need, paying for five different subscriptions to cover one workflow, or exporting to spreadsheets to make anything work &mdash; that&rsquo;s when custom pays back fast. A well-built internal tool usually pays for itself in 6&ndash;12 months in time saved, and you own it forever.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">Can one person really do all of this?</h3>
+          <p class="faq__answer">Yes &mdash; and I&rsquo;m not doing it alone. I use AI tools for scaffolding, research, and production support, and I&rsquo;ve spent a decade building the design and engineering muscle to direct them well. That combination is what makes 4&ndash;10 week timelines realistic. You get a senior designer-engineer on point from day one, not a rotating team of juniors.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">What if the project needs more than you can handle alone?</h3>
+          <p class="faq__answer">Then I bring in people I&rsquo;ve worked with &mdash; specific developers, copywriters, or specialists I trust &mdash; and stay on point for direction and delivery. You keep one point of contact. I&rsquo;m upfront about scope from the start, so if something is genuinely outside what I can ship in the timeline you need, I&rsquo;ll tell you before we sign anything.</p>
         </div>
         <div class="faq__item">
           <h3 class="faq__question">Will it scale when I get users?</h3>
-          <p class="faq__answer">The stack (Next.js + Supabase + Vercel) is built for scale. The same tools power products with millions of users. You won't need to rebuild when things take off.</p>
+          <p class="faq__answer">The stack (Next.js + Supabase + Vercel) is built for scale. The same tools power products with millions of users. You won&rsquo;t need to rebuild when things take off.</p>
         </div>
         <div class="faq__item">
-          <h3 class="faq__question">What happens after the 4 weeks?</h3>
-          <p class="faq__answer">You get a full handoff &mdash; documentation, video walkthrough, and one round of polish. Most clients continue with ongoing development at &euro;80/hour or a fractional CTO arrangement.</p>
+          <h3 class="faq__question">What happens after launch?</h3>
+          <p class="faq__answer">You get a full handoff &mdash; documentation, video walkthrough, and one round of polish. Most clients continue on a Design &amp; Build Retainer for ongoing iteration.</p>
         </div>
         <div class="faq__item">
-          <h3 class="faq__question">What if I'm not technical?</h3>
-          <p class="faq__answer">That's the whole point. You bring the idea and domain knowledge, I handle everything else &mdash; design, code, deployment, and handoff.</p>
+          <h3 class="faq__question">What if I&rsquo;m not technical?</h3>
+          <p class="faq__answer">That&rsquo;s the whole point. You bring the idea and domain knowledge, I handle everything else &mdash; design, code, deployment, and handoff.</p>
         </div>
       </div>
     </div>
