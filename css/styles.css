@@ -525,7 +525,15 @@ section {
   font: 700 60px/70px var(--font-heading);
   color: var(--lime);
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 16px;
+}
+
+.timeline__subtitle {
+  font: 400 20px/30px var(--font-body);
+  color: var(--text-light);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
 }
 
 .timeline__grid {
@@ -1329,6 +1337,12 @@ section {
   .timeline__title {
     font-size: 36px;
     line-height: 42px;
+    margin-bottom: 12px;
+  }
+
+  .timeline__subtitle {
+    font-size: 16px;
+    line-height: 24px;
     margin-bottom: 40px;
   }
 
