@@ -1,0 +1,41 @@
+# Aigar Sild
+
+> One senior designer-engineer based in Tallinn, Estonia. I design and build brand, product, and custom software end-to-end — launch-ready MVPs, internal tools, and brand identities in weeks, not quarters.
+
+I work with pre-seed and seed-stage founders launching new products, and with established operators (workshops, service companies, distributors, agencies) who need internal tools built for how their team actually works. One or two clients at a time. Senior attention from start to finish.
+
+## What I do
+
+- **MVP Build** — from €8,000, 4 weeks. Brand identity, marketing site, and 2–3 core product flows built in Next.js + Supabase and deployed to Vercel. Handoff doc and video walkthrough included.
+- **Internal Tool Build** — from €12,000, 6–10 weeks. Custom web app in Next.js + Supabase with multi-user auth, roles, and permissions. Order management, service workflows, inventory, CRM, dashboards. 30 days of post-launch support included.
+- **Brand Sprint** — €5,000, 2 weeks. Logo system, color, typography, brand guidelines (PDF), AI brand prompt library.
+- **Design & Build Retainer** — €2,900/month. Ongoing design and development, weekly shipped work, async communication via Slack. One or two slots open at a time.
+- **Brand & Product Audit** — €490, 3 days. Async review of current brand, site, or product with a written report and 30-minute walkthrough.
+
+## How I work
+
+I'm an AI-native builder. Figma designs become structured spec files that AI agents build against. Claude writes code, Codex reviews it, automated tests run on every change — and I'm in the loop at every step making the calls. This is how 4-week MVP timelines are realistic instead of optimistic.
+
+Stack: Next.js, Supabase, Vercel, TypeScript, React, Figma.
+
+## Selected clients
+
+- Flowdesk (flowdesk.ee) — my own SaaS for workshop businesses, over a year in production, used by Sportland (one of the largest sports retailers in the Nordics)
+- Hykell (hykell.com) — cloud cost optimization dashboard on Next.js + AWS
+- SalesOrder (salesorder.eu) — B2B order management platform, brand identity and product design
+- Kauplus Rattapood — bike shop in Laagri I co-founded (also where Flowdesk originated)
+- Avora, Birch Tree Analytics, Cyclegrounds, Hüpoteek24, RAKS
+
+## About
+
+I'm Aigar Sild. 10+ years across brand, product design, and full-stack development. Before going solo I built and still run Kauplus Rattapood in Laagri, Estonia. Flowdesk started as internal workshop management software and became a SaaS with real users on production.
+
+## Contact
+
+- Website: https://aigarsild.com
+- Email: via contact form at https://aigarsild.com/#contact
+- Book a call: https://calendly.com/aigarsild/30min
+- LinkedIn: https://www.linkedin.com/in/aigar-sild/
+- Dribbble: https://dribbble.com/aigar_sild
+
+Based in Tallinn, Estonia. Available EU-wide and remote.
