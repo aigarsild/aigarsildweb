@@ -61,36 +61,15 @@ function initColorflow() {
         c.restore();
     }
 
-    // Paint smooth wavy gradient mesh per pixel-column.
-    // Multiple sine waves create organic undulating bands.
-    function paintScene(c, w, h, dx, dy, vShift, t) {
+    // Paint smooth gradient mesh per pixel-column (static, no animation).
+    function paintScene(c, w, h) {
         c.fillStyle = 'rgb(10, 14, 26)';
         c.fillRect(0, 0, w, h);
 
-        // Gentle wave layers — low frequencies, small amplitudes for smooth undulations
-        const waves = [
-            { freq: 0.5,  amp: 0.03,  speed: 0.04, phase: 0 },
-            { freq: 1.0,  amp: 0.025, speed: 0.06, phase: 1.2 },
-            { freq: 1.6,  amp: 0.018, speed: 0.08, phase: 2.8 },
-            { freq: 2.5,  amp: 0.012, speed: 0.05, phase: 4.1 },
-            { freq: 0.3,  amp: 0.02,  speed: 0.03, phase: 0.5 },
-            { freq: 3.5,  amp: 0.006, speed: 0.10, phase: 3.3 },
-        ];
-
-        // Per-column wavy gradient — wide, gentle transitions
+        // Per-column vertical gradient — wide, gentle transitions
         for (let x = 0; x < w; x++) {
-            const nx = x / w;
+            const mid = 0.85;
 
-            // Sum sine waves for vertical displacement
-            let waveOffset = 0;
-            for (const wv of waves) {
-                waveOffset += Math.sin(nx * Math.PI * 2 * wv.freq + t * wv.speed + wv.phase) * wv.amp;
-            }
-
-            const baseMid = 0.68 + vShift / h;
-            const mid = baseMid + waveOffset;
-
-            // Wide, smooth vertical gradient for this column
             const grad = c.createLinearGradient(0, 0, 0, h);
             const fs = Math.max(0, Math.min(1, mid - 0.32));
             const fe = Math.max(0, Math.min(1, mid + 0.22));
@@ -119,21 +98,19 @@ function initColorflow() {
         c.fillRect(0, 0, w, h);
 
         // Subtle blue tint bottom-left
-        const blueWave = Math.sin(t * 0.2) * h * 0.02;
-        ellipseGradient(c, w * -0.05 + dx, h * 0.92 + dy + vShift + blueWave,
+        ellipseGradient(c, w * -0.05, h * 0.92,
             w * 0.45, h * 0.45,
             [[0, 'rgba(40,90,255,0.5)'], [0.12, 'rgba(42,88,250,0.3)'],
              [0.28, 'rgba(35,70,210,0.12)'], [0.45, 'rgba(25,50,160,0.04)'],
              [0.65, 'rgba(18,35,110,0.01)'], [0.85, 'rgba(12,20,60,0)']]);
     }
 
-    function draw(time) {
+    function draw() {
         const displayW = window.innerWidth;
         const displayH = window.innerHeight;
         const rows = Math.max(4, Math.ceil(displayH / BASE_BAND));
-        const vShift = 0;
 
-        // Resize offscreen buffer (full width, low vertical res for soft bands)
+        // Resize offscreen buffer (full width, low vertical res — for horizontal pixel bands)
         if (offscreen.width !== displayW || offscreen.height !== rows) {
             offscreen.width = displayW;
             offscreen.height = rows;
@@ -146,12 +123,8 @@ function initColorflow() {
             generateNoise(displayW, displayH);
         }
 
-        const t = time * 0.001;
-        const dx = Math.sin(t * 0.15) * displayW * 0.015;
-        const dy = Math.cos(t * 0.1) * rows * 0.01;
-
         // 1. Render gradient at low vertical resolution
-        paintScene(offCtx, displayW, rows, dx, dy, vShift, t);
+        paintScene(offCtx, displayW, rows);
 
         // 2. Upscale with nearest-neighbor for soft pixelated bands
         dispCtx.imageSmoothingEnabled = false;
@@ -166,11 +139,10 @@ function initColorflow() {
             dispCtx.globalAlpha = 1;
             dispCtx.globalCompositeOperation = 'source-over';
         }
-
-        requestAnimationFrame(draw);
     }
 
-    requestAnimationFrame(draw);
+    draw();
+    window.addEventListener('resize', draw);
 }
 
 /* ============================================
@@ -497,8 +469,6 @@ function initScrollAnimations() {
         '.stories__card',
         '.offer-card',
         '.about__body p',
-        '.build__step',
-        '.build__proof',
         '.testimonial',
         '.contact__option'
     ].join(', ');
